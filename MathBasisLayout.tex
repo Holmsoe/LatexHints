@@ -1,0 +1,142 @@
+\documentclass{article}
+%\documentclass[landscape,a4paper,12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{array}
+\usepackage{mathtools}
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{subfig}
+\usepackage{hyperref} %hyperref skal være den sidste pakke
+
+\begin{document}
+
+\title{Matematik øvelser}
+
+\author{Finn Andersen}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+Jeg leger lidt med matematik funktioner i \LaTeX{} og giver nogle eksempler. Målet er at lave en kogebog hvor kode kan kopieres fra til forskellige anvendelser.
+\end{abstract}
+
+\section{Matematik}
+
+\subsection{Opvarmning}
+
+Her har du en formel der tilpasses til en linie \(a^2+b^2=c^2\). Kode er med bøde parenteser:\verb"\(a^2+b^2=c^2\)". Når koden står i teksten kaldes det at skrive matematik i tekst mode.\\
+Vi kan også få ligningen til at stå i en separat linie. Der kommer ikke nummer på ligningen, men der bliver mere plads: \[a^2+b^2=c^2\] 
+Kode er med firkantede parenteser:\verb" \[a^2+b^2=c^2\]". Efter en sådan kode kommer der automatisk linieskift til næste tekst eller ligning. Når vi skriver ligninger i linier adskildt fra teksten kaldes det \verb"display style" eller vi siger, at vi skriver teksten i display mode. Både matematik i tekstmode og display mode kaldes \verb"math mode". Kun i \verb"math mode" kan de tilhørende koder forstås, ikke i \LaTeX{} almindelige tekst mode.
+Hvis der på denne måde laves flere ligninger under hinanden centreres de og lighedtegn er ikke alignet.
+Ønsker vi at nummerere ligningen bruges \verb"equation". 
+\begin{equation}
+a^2+b^2=c^2
+\end{equation}
+Koden er: \verb"\begin{equation}  a^2+b^2=c^2  \end{equation}". Det vil lette oversigten at skrive koden i 3 linier.
+Der kan kun være en ligning inde i \verb"equation" environment. Skrives der flere fortsætte på samme linie - også hvis man forsøger at indsætte et linieskift.
+Ligningerne nummereres automatisk. Her kommer anden ligning:
+\begin{equation}
+E=mc^2
+\end{equation}
+Bemærk, at den er nummereret. Hvis der i rækkefølgen kommer en ligning vi ikke ønsker nummereret skal \verb"equation*" anvendes. For eksempel:
+\begin{equation*}
+10^{\log(x)}=x
+\end{equation*}
+Her er koden \verb"\begin{equation*}10^{\log(x)}=x\end{equation*}".
+\LaTeX{} kender normale funktioner og vil lave korrekt layout når man skriver \verb"10^{\log(x)}=x". Hvis man istedet havde skrevet \verb"10^log(x)=x" ville bogstaverne \verb"log" få den forkerte skrift.  Bemærk også, at argumenter til en funktion der har flere bogstaver skal rammes ind med \verb"{}", ellers er det kun første bogstav der omfattes af funktion. Her er vist FORKERT layout hvor logtegn er skrevet uden \verb"\" foran: \[10^{log(x)=x}\]. Kode \verb"10^{log(x)=x}".
+Her er FORKERT formel hvor \verb"{}" mangler: \[10^log(x)=x\]. Kode \verb"10^log(x)=x".
+Der skal en stjerne på, hvis ikke ligningen skal have nummer. Kode: \verb"\begin{equation*}  10^{\log(x)}=x  \end{equation*}". Her er en formel uden nummer, denne gang det korrekte udseende og kode er korrekt med \verb"{} og \" korrekt:
+\begin{equation*}  
+10^{\log(x)}=x  
+\end{equation*}
+Og så en mere der er nummereret:
+\begin{equation}
+\log{(10^x)}=x
+\end{equation}
+Vi kan også markere ligningen med en tekst eller et tag: 
+\begin{equation}
+1+1=3\tag{Finns ligning}
+\end{equation}
+Koden: \verb"\begin{equation}  1+1=3\tag{Finns ligning}  \end{equation}". Der kan kun være en tag per ligning, ligesom der kun kan være et nummer per ligning.
+
+\subsection{Basisfunktioner}
+Det forudsættes ved følgende eksempler at vi er i matematik mode - enten matematik tekst(inline) eller display mode (i separat linie).\\
+Her er et eksempel for opstilling i tabel. Bemærk at tredie søjle er i inline format. 
+Se de næste to eksempler for display mode.\\
+\begin{tabular}{l c c}
+{}\\
+\textbf{Funktion}&\textbf{Kode}&\textbf{Eksempel}\\\\
+Hævet skrift&\verb"x^2"& \(x^2\)  \\\\
+Sænket skrift&\verb"x_2"&\(x_2\)  \\\\
+Brøkstreg&\verb"\frac{2}{1-x^2}"&\(\frac{2}{1-x^2}\)\\\\
+Kvadratrod&\verb"\sqrt{49}"&\(\sqrt{49}\) \\\\
+x'te rod&\verb"\sqrt[3]{64}"&\(\sqrt[3]{64}\) \\\\
+Sum	&\verb"\sum_{x=1}^n"	&\(\sum_{x=1}^n\)\\
+\end{tabular}\\
+%\verb"\text" bruges til at skrive tekst i display mode = i math mode = i equation mode
+%\verb"\qquad" bruges til afstand= i text mode
+%\verb" \" skrives i text environment som \verb"\textbackslash" 
+%\verb"circumflex ^" skrives som  \verb"\^" og sættes over et tomt felt. 
+Her er et eksempel på opstilling i align. Bemærk, at align som standard bruger display style i linierne.
+\begin{align*}
+&\text{Funktion} &&	\text{Eksempel} &&	\text{Kode}&&\\
+&\text{Hævet skrift} &&	x^2 &&	\text{ x\^{}2}&&\\
+&\text{Sænket skrift} &&	x_2 &&		\text{ x\_{}2}&&\\
+&\text{Brøkstreg} &&	\frac {2}{1-x^2} &&	\text{\textbackslash frac\{2\}\{1-x\^{}2\}}&&\\
+&\text{Kvadratrod} &&	\sqrt{49} &&	\text{\textbackslash sqrt\{49\}}&&\\
+&\text{nte rod} &&	\sqrt [3] {64} &&	\text{\textbackslash sqrt[3]\{64\}}&&\\
+&\text{Sum}&& 	\sum_{x=1}^n&&	\text{test}&&\\
+\text{}\\
+\end{align*}
+Her er et eksempel med opstilling med array funktionen. Virker som en tabel. Skal stå indeni en equation environment. Alignment sættes ligesom i table i starten. Bemærk, hvordan formatering kan sættes til displaystyle (inline er standard) i søjledefinitionen. Dette kræver pakken \verb"array". Der er også givet lidt længere søjleafstand mellem første og anden søjle med \verb"\qquad". Bemærk, at tekst kan gives både med \verb"\text{}" og \verb"\verb" kommando. I nogle tilfælde er \verb"\verb" simplere. For tabeller med både tekst og matematik i display style giver \verb"array" den bedste layout.
+\begin{equation*}
+\begin{array}{l >{\qquad}l >{\displaystyle}c}
+\textbf{Funktion}&\textbf{Kode}&\textbf{Eksempel}\\\\
+\text{Hævet skrift}	&\verb"x^2"			& x^2  \\\\
+\text{Sænket skrift}	&\verb"x_2"			&x_2 \\\\
+\text{Brøkstreg}	&\verb"\frac{2}{1-x^2}"	&\frac{2}{1-x^2}\\\\
+\text{Kvadratrod}	&\verb"\sqrt{49}"		&\sqrt{49} \\\\
+\text{x'te rod}		&\verb"\sqrt[3]{64}"		&\sqrt[3]{64} \\\\
+\text{Sum}		&\verb"\sum_{x=1}^n"	&\sum_{x=1}^n\\\\
+\end{array}
+\end{equation*}
+En opstilling med flere valgmuligheder kan laves med cases.
+Den skal stå i et equation environment. 
+\begin{equation*}
+f(x)=
+\begin{cases}
+\sum_{n=1}^\infty n^x & \text{for } x\in \mathbb{Q}\\
+0&\text{ellers}
+\end{cases}
+\end{equation*}
+Som det ses, står matematik til højre for klammer i inline mode. Ønskes displaystyle skal dcases fra pakken \verb"mathtools" anvendes. Her illustreres forskellen.
+\begin{equation*}
+f(x)=
+\begin{dcases}
+\sum_{n=1}^\infty n^x & \text{for } x\in \mathbb{Q}\\
+0&\text{ellers}
+\end{dcases}
+\end{equation*}
+
+Hvis man ønsker medførerpile mellem linierne kan dette løses ved at sætte linierne i \verb"alignat" environment.
+\verb"alignat" skal have antallet af søjler in hovedet. 
+\begin{alignat*}{2}
+&&\sum_{x=1}^n x^2  &= Q\\
+\ArrowBetweenLines % \Updownarrow is the default
+&&c^2   &=  a^2+b^2
+\end{alignat*}
+Bemærk, at ved højreplacering skal der stå \verb"&&" i slutning af hver linie, hvor den ved venstreplacering skal stå til venstre i linien.
+\begin{alignat*}{2}
+\sum_{x=1}^n x^2 &= Q &&\\
+\ArrowBetweenLines*[\Downarrow]
+c^2 &= a^2+b^2 &&
+\end{alignat*}
+
+\end{document}
