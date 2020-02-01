@@ -1,0 +1,105 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{array}
+\usepackage{mathtools}
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{subfig}
+\usepackage{hyperref} %hyperref skal være den sidste pakke
+
+\title{Fysiske enheder og SI systemet}
+\author{Finn Andersen}
+\date{\today}
+
+%\pagestyle{fancy} 
+%\pagenumbering{Roman}
+
+\begin{document}
+
+\maketitle
+%\thispagestyle{empty} 
+
+\begin{abstract}
+Forståelsen af SI systemet og enhederne bag de fysiske størrelser gør det lettere at tilegne sig fysik. Ofte kan fysiske sammenhænge gættes ud fra kendskab til enhederne.
+\end{abstract}
+
+\begin{table}[h]
+\caption{Oversigt over prefixer til SI enheder}
+\begin{tabular}{llllllllll}
+\toprule
+deca-&	hecto-&	kilo-	&mega-&	giga-&	tera-	&peta-	&exa-	&zetta-	&yotta-\\
+a&	h&	k&	M	&G	&T&	P&	E	&Z&	Y\\
+$10^1$&	$10^2$	&$10^3$	&$10^6$	&$10^9$	&$10^{12}$	&$10^{15}$&	$10^{18}$&	$10^{21}$	&$10^{24}$\\\midrule									
+deci-	&centi-	&milli-	&micro-&	nano-&	pico-	&femto-&	atto-	&zepto-&	yocto-\\
+d&	c&	m&	$\mu$	&n	&p	&f	&a&	z&	y\\
+$10^{-1}$&	$10^{-2}$	&$10^{-3}$	&$10^{-6}$	&$10^{-9}$	&$10^{-12}$	&$10^{-15}$&	$10^{-18}$&	$10^{-21}$	&$10^{-24}$\\\midrule
+\end{tabular}
+\end{table}
+
+\section{Basisenheder}
+
+\begin{table}[h]
+\caption{Basisenheder}
+\begin{tabular}{lcllc}
+\toprule
+Navn	&	Enhed	&	Hvad måles?	&	Symbol for det der måles	&	Dimension symbol\\\midrule
+meter	&	m	&	længde	&	l (lille L), x, r	&	L\\
+kilogram	&	kg	&	masse, (vægt)	&	m	&	M\\
+sekund	&	s	&	tid	&	t	&	T\\
+ampere	&	A	&	elektrisk strøm	&	I (stort i)	&	I\\
+kelvin	&	K	&	temperatur	&	T	&	$\Theta$\\
+candela	&	cd	&	lysintensitet	&	Iv (stort i med lille v som indeks)	&	J\\\midrule
+\end{tabular}
+\end{table}
+
+\subsection{Længde.}
+Der har i løbet af historien været mange længdemål. Typisk har man brugt nærliggende mål såsom længden af underarmen som grundlæggende længdeenhed. I 1795 opfandt franskmændene Delambre og Mechain et mere universelt længdemål. De definerede en meter som en 10 milliontedel af en fjerdedel af jordens omkreds. I dag ved vi, at jordens omkreds er 40 075 km, så de var tæt på. Det er denne definition der i dag danner grundlag for meterens størrelse. Blot er definitionen blevet ændret således at den er blevet mere nøjagtig. Man har siden 1799 haft den såkaldte normalmeter liggende i Paris som grundlag for definitionen. Fra 1983 er en meter defineret ud fra lysets hastighed i vacuum som den distance lyset passerer på \(\frac{1}{299,792,458}\) sekunder. I praksis anvendes følgende meterbetegnelser:
+
+\begin{table}[h]
+\caption{Anvendte længdemål}
+\begin{tabular}{lllll}
+\toprule
+Navn &Symbol &Størrelse  &\\\midrule
+kilometer&km&$10^3$&$1000$&meter\\
+meter&m&$1$&1&meter\\
+decimeter&dm&$10^{-1}$&$0.1$&meter\\
+centimeter&cm&$10^{-2}$&$0.01$&meter\\	
+millimeter&mm&$10^{-3}$&$0.001$&meter\\
+mikrometer&$\mu$m&$10^{-6}$&$0.000001$&meter\\	%µm
+nanometer&nm&$10^{-9}$&$0.000000001$&meter\\\midrule
+\end{tabular}
+\end{table}
+
+Desuden anvendes i Danmark en række længdemål der ikke passer med SI systemet.
+
+1 sømil = 
+1 lysår =
+1 ångstrøm =
+1 tomme =
+
+\subsection{Tid.}
+Opdelingen af døgnet i 24 timer stammer helt tilbage til de gamle egyptere. Babylonerne anvendte en underopdeling i \(\frac{1}{60}\) omkring 300 BC. Omkring år 1000 ser man første gang opdelingen af døgnet i timer, minutter og sekunder hos den persiske videnskabsmand Al-Biruni. Denne opdeling var basis for definitionen af et sekund som \(\frac{1}{86,400}=\frac{1}{24 \times 60 \times 60}\) af et døgn. Sekund blev indført som basisenhed for tidsmåling i 1832. Definitionen baseret på Al-Biruni blev anvendt indtil 1960. Da døgnet eller jordens omløbstid om solen ikke er helt konstant besluttede man i 1960 erne at indføre en ny definition baseret på frekvensen af strålingen fra atomhenfald for et Caesium atom.\\
+Normalt anvendes der ikke prefixer for tidsangivelser større end et sekund. For mindre tidsintervaller anvendes følgende tidsmål:
+
+\begin{table}[h]
+\caption{Anvendte tidsmål}
+\begin{tabular}{lllll}
+\toprule
+Navn &Symbol &Størrelse  &\\\midrule
+millisekund&ms&$10^{-3}$&$0.001$&sekund\\
+mikrosekund&$\mu$s&$10^{-6}$&$0.000001$&sekund\\	%µm
+nanosekund&ns&$10^{-9}$&$0.000000001$&sekund\\\midrule
+\end{tabular}
+\end{table}
+
+
+
+\end{document}
+
