@@ -1,0 +1,116 @@
+\documentclass{article}
+%\documentclass[landscape,a4paper,12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{array}
+\usepackage{mathtools}
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{subfig}
+\usepackage{dashrule}
+\usepackage{fancyhdr}
+\usepackage{hyperref} %hyperref skal være den sidste pakke
+
+%\pagestyle{fancy} 
+
+\pagenumbering{Roman} 
+
+
+\renewcommand{\headrulewidth}{0.4pt} 
+\renewcommand{\footrulewidth}{0.4pt} %Stadard er 0
+
+%\renewcommand{\headrule}{\color{green} }
+%\renewcommand{\footrule}{\color{green}   }
+%\renewcommand{\sectionmark}[1]{\markboth{mit hovede - \ #1}{}}
+%\renewcommand{\subsectionmark}[1]{\markright{#1}}
+
+
+\title{Mellemrum og linier}
+\author{Finn Andersen}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{plain} 
+
+\fancyhead{} %clear all headers
+%\color{red}{\fancyhead[LO,LE]{\leftmark}} 
+\lhead{\colorbox{red}{hej\makebox[0.945\textwidth]{}}} %Bredde skal tilpasses aktuel tekstvidde
+\fancyhead[CO,CE]{\thepage}
+\fancyhead[RO,RE]{\rightmark}
+\fancyfoot{} %clear all footers
+\fancyfoot[LO,LE]{venstre fod}
+\fancyfoot[CO,CE]{\thepage}
+\fancyfoot[RO,RE]{højre fod}
+\fancyhf[COF,CEF]{\thepage}
+%Muligheder for at gøre head bredere eller smallere
+%\fancyhfoffset[LH]{1cm}
+%\fancyhfoffset[RH]{-1cm}
+
+\pagestyle{fancy} 
+
+\begin{abstract}
+Eksperimenter med mellemrum og linier
+\end{abstract}
+
+\section{Første kapitel}
+\subsection{Hej}
+
+\subsection{Hej igen}
+Hej med dig
+\\[5pt]
+\hspace{5cm}
+\rule {5cm}{10pt}
+{\color{red}{\rule{5cm}{10pt}}}
+hej \\[5pt]
+Her er jeg\hfill på det tomme rum\\
+Jeg tænker \dotfill nu har jeg tænkt\\
+jeg slår en streg \hrulefill{ }nu er jeg færdig\\
+\makebox[0.5\columnwidth][l]{en box med tekst til venstre}nu er jeg udenfor boxen.\\
+\makebox[0.5\columnwidth][c]{en box med tekst i midten}nu er jeg udenfor boxen.\\
+\makebox[0.5\columnwidth]{\dotfill}\\
+\makebox[0.5\columnwidth]{\hrulefill}\\
+\makebox[0.5\columnwidth]{\color{red}{\hrulefill}}\\
+Her er jeg\hfill på det tomme rum mmmmmmmmh\hfill her er jeg så igen\\
+\\[5pt]
+\hspace{5cm}
+\rule {5cm}{10pt}
+{\color{white}{\rule{5cm}{10pt}}}
+hej \\[5pt]
+
+%Load package \verb"hdashrule"
+%Format for stiplede linier
+%\hdashrule [hraisei] [hleaderi] {hwidthi} {hheighti} {hdashi}
+%hraisei er distance over baseline
+%hwidthi er bredde
+%hheighti er højde
+%hdashi er mønstret der gentages. f.eks. 3pt 2pt 4pt 2pt første er streg næste er tom osv.
+%leader er en kode for mellemrum omkring. Kan være x, c
+\hdashrule[0.5ex][x]{3in}{2pt}{2cm 0pt}
+
+\subsection{Darwin}
+LifeChildhood and educationSee also: Charles Darwin's education and Darwin-Wedgwood family
+ 
+The seven-year-old Charles Darwin in 1816.Charles Robert Darwin was born in Shrewsbury, Shropshire, England on 12 February 1809 at his family home, the Mount.[16] He was the fifth of six children of wealthy society doctor and financier Robert Darwin, and Susannah Darwin (née Wedgwood). He was the grandson of Erasmus Darwin on his father's side, and of Josiah Wedgwood on his mother's side. Both families were largely Unitarian, though the Wedgwoods were adopting Anglicanism. Robert Darwin, himself quietly a freethinker, had baby Charles baptised in the Anglican Church, but Charles and his siblings attended the Unitarian chapel with their mother. The eight-year-old Charles already had a taste for natural history and collecting when he joined the day school run by its preacher in 1817. That July, his mother died. From September 1818, he joined his older brother Erasmus attending the nearby Anglican Shrewsbury School as a boarder.[17]
+Darwin spent the summer of 1825 as an apprentice doctor, helping his father treat the poor of Shropshire, before going to the University of Edinburgh Medical School with his brother Erasmus in October 1825. He found lectures dull and surgery distressing, so neglected his studies. He learned taxidermy from John Edmonstone, a freed black slave who had accompanied Charles Waterton in the South American rainforest, and often sat with this "very pleasant and intelligent man".[18]
+
+In Darwin's second year he joined the Plinian Society, a student natural history group whose debates strayed into radical materialism. He assisted Robert Edmond Grant's investigations of the anatomy and life cycle of marine invertebrates in the Firth of Forth, and on 27 March 1827 presented at the Plinian his own discovery that black spores found in oyster shells were the eggs of a skate leech. One day, Grant praised Lamarck's evolutionary ideas. Darwin was astonished, but had recently read the similar ideas of his grandfather Erasmus and remained indifferent.[19] Darwin was rather bored by Robert Jameson's natural history course which covered geology including the debate between Neptunism and Plutonism. He learned classification of plants, and assisted with work on the collections of the University Museum, one of the largest museums in Europe at the time.[20]
+
+This neglect of medical studies annoyed his father, who shrewdly sent him to Christ's College, Cambridge, for a Bachelor of Arts degree as the first step towards becoming an Anglican parson. As Darwin was unqualified for the Tripos, he joined the ordinary degree course in January 1828.[21] He preferred riding and shooting to studying. His cousin William Darwin Fox introduced him to the popular craze for beetle collecting which Darwin pursued zealously, getting some of his finds published in Stevens' Illustrations of British entomology. He became a close friend and follower of botany professor John Stevens Henslow and met other leading naturalists who saw scientific work as religious natural theology, becoming known to these dons as "the man who walks with Henslow". When his own exams drew near, Darwin focused on his studies and was delighted by the language and logic of William Paley's Evidences of Christianity.[22] In his final examination in January 1831 Darwin did well, coming tenth out of 178 candidates for the ordinary degree.[23]
+
+Darwin had to stay at Cambridge until June. He studied Paley's Natural Theology which made an argument for divine design in nature, explaining adaptation as God acting through laws of nature.[24] He read John Herschel's new book which described the highest aim of natural philosophy as understanding such laws through inductive reasoning based on observation, and Alexander von Humboldt's Personal Narrative of scientific travels. Inspired with "a burning zeal" to contribute, Darwin planned to visit Tenerife with some classmates after graduation to study natural history in the tropics. In preparation, he joined Adam Sedgwick's geology course, then went with him in the summer for a fortnight to map strata in Wales.[25] After a week with student friends at Barmouth, he returned home to find a letter from Henslow proposing Darwin as a suitable (if unfinished) gentleman naturalist for a self-funded place with captain Robert FitzRoy, more as a companion than a mere collector, on HMS Beagle which was to leave in four weeks on an expedition to chart the coastline of South America.[26] His father objected to the planned two-year voyage, regarding it as a waste of time, but was persuaded by his brother-in-law, Josiah Wedgwood, to agree to his son's participation.[27]
+
+Voyage of the BeagleFor more details on this topic, see Second voyage of HMS Beagle.
+ 
+The voyage of the BeagleBeginning on 27 December 1831, the voyage lasted almost five years and, as FitzRoy had intended, Darwin spent most of that time on land investigating geology and making natural history collections, while the Beagle surveyed and charted coasts.[3][28] He kept careful notes of his observations and theoretical speculations, and at intervals during the voyage his specimens were sent to Cambridge together with letters including a copy of his journal for his family.[29] He had some expertise in geology, beetle collecting and dissecting marine invertebrates, but in all other areas was a novice and ably collected specimens for expert appraisal.[30] Despite suffering badly from seasickness, Darwin wrote copious notes while on board the ship. Most of his zoology notes are about marine invertebrates, starting with plankton collected in a calm spell.[28][31]
+
+On their first stop ashore at St. Jago, Darwin found that a white band high in the volcanic rock cliffs included seashells. FitzRoy had given him the first volume of Charles Lyell's Principles of Geology which set out uniformitarian concepts of land slowly rising or falling over immense periods,[II] and Darwin saw things Lyell's way, theorising and thinking of writing a book on geology.[32] In Brazil, Darwin was delighted by the tropical forest,[33] but detested the sight of slavery.[34]
+
+At Punta Alta in Patagonia he made a major find of fossil bones of huge extinct mammals in cliffs beside modern seashells, indicating recent extinction with no signs of change in climate or catastrophe. He identified the little known Megatherium by a tooth and its association with bony armour which had at first seemed to him like a giant version of the armour on local armadillos. The finds brought great interest when they reached England.[35][36] On rides with gauchos into the interior to explore geology and collect more fossils he gained social, political and anthropological insights into both native and colonial people at a time of revolution, and learnt that two types of rhea had separate but overlapping territories.[37][38] Further south he saw stepped plains of shingle and seashells as raised beaches showing a series of elevations. He read Lyell's second volume and accepted its 
+\end{document}
