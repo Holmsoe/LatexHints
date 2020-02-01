@@ -1,0 +1,128 @@
+%kommentar
+\documentclass{article}%standard uden ekstradefinitioner
+%\documentclass[landscape,a4paper,12pt]{article}%horisontal, papirstørrelse og skriftstørrelse
+\usepackage{graphicx}%nødvendig for grafik
+\usepackage{amsthm,amsmath,amsfonts,amssymb}%nødvendige for god matematik
+\usepackage[utf8]{inputenc} %inputenc sørger for at der forstås æ, ø og å
+\usepackage[danish]{babel} %kapitler etc. får danske navne, dansk orddeling
+\usepackage[T1]{fontenc}% diverse font såsom umlaut og apostrof
+%\usepackage{fullpage}
+%\usepackage{geometry}%Giver mindre margins i siderne og dermed større side
+\usepackage{fancyhdr}%giver header og footers til dokumentet
+\usepackage{array}
+\usepackage{mathtools}
+\usepackage{xy}
+\usepackage{color}
+\usepackage{verbatim}   % useful for program listings
+\usepackage{subfig}
+\usepackage{caption}
+\usepackage{everysel}
+\usepackage{keyval}
+\usepackage{ragged2e}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{multicol}%bedre styring af flere kolonner
+\usepackage{booktabs} % giver mulighed for \toprule, \midrule og \bottomrule
+\usepackage[referable]{threeparttablex}
+\usepackage{dcolumn} %lodret alignment af decimaltal og andre formateringer
+\usepackage{tabularx} % til at fastlægge nøjagtig bredde af kolonner i tabeller.
+\usepackage{setspace}
+\usepackage{lettrine}
+\usepackage{calligra}
+
+\usepackage{hyperref}   % use for hypertext links, incl. external documents and URLs
+
+%\listoffigures%liste over figurer
+
+\pagenumbering{Roman}%sidenummerering
+%muligheder for setting af pagenumber
+%arabic=arabic numerals
+%roman=lower case roman numerals
+%Roman=upper case roman numerals
+%alph=lower case letter
+%Alph=upper case letter
+
+\newtheorem{theorem}{Sætning}[section]
+\newtheorem{lemma}[theorem]{Hjælpesætning}
+\newtheorem{proposition}[theorem]{Undersætning}
+\newtheorem{corollary}[theorem]{Følgesætning}
+
+\newenvironment{Finnproof}[1][Bevis]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\Finnqed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+\title{Finns template}
+\author{Finn Andersen\\Parkvej 14\\Nyk{\o}bing F\\\texttt{fa@faxekalk.dk}}
+\date{\today}
+
+\begin{document}
+\maketitle
+\renewcommand{\abstractname}{Opgaveformulering}%overskrift opgaveformulering istedet for standard resume
+\begin{abstract}
+Her er min abstract
+\end{abstract}
+
+\section{Afsnit 1}
+hej
+\begin{Finnproof}{hejsa}
+Dette er mit bevis
+\qed
+\Finnqed
+\end{Finnproof}
+
+\begin{definition}
+Dette er min definition
+\end{definition}
+
+
+\begin{example}{et eksempel}
+dette er mit eksempel
+\end{example}
+
+\begin{remark}{en kommentar}
+dette er min kommentar
+\end{remark}
+
+\theorem{min teori}% en linie
+\begin{theorem}% flere linier
+dette er min teori
+\end{theorem}
+\lemma{mit lemma}
+\proposition{min proposition}
+\corollary{min corollary}
+
+\subsection{Afsnit 1.1}
+med
+\subsection{Afsnit 1.2}
+dig
+\section{Afsnit 2}
+din
+\subsection{Afsnit 2.1}
+lille
+\subsection{Afsnit 2.2}
+banan
+\section{Afsnit 3}
+flue
+\subsection{Afsnit 3.1}
+haha
+\subsection{Afsnit 3.2}
+Her er brødtekst.
+
+\tableofcontents 
+%indholdsfortegnelse. Placer hvor indholdfortegnelse skal være. 2 kørsler nødv. 
+%Kør FNDB mellem kørsler.
+\end{document}
