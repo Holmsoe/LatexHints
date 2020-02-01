@@ -1,0 +1,180 @@
+\documentclass{article}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{array}
+\usepackage{mathtools}
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{subfig}
+\usepackage{hyperref} %hyperref skal være den sidste pakke
+
+\title{Headers og footers i \LaTeX{}}
+\author{Finn Andersen}
+\date{\today}
+
+\pagestyle{fancy} 
+\pagenumbering{Roman}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty} 
+
+\begin{abstract}
+Basis layout af \LaTeX{} dokumenter. Styring af head og foot på siderne.
+\end{abstract}
+
+\renewcommand{\sectionmark}[1]{\markboth{Afsnit\ \thesection. \ #1}{}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}}
+
+\renewcommand{\headrulewidth}{0.4pt} % Tykkelse af headerruler.
+\renewcommand{\footrulewidth}{0.4pt} %Tykkelse af fodbjælke. Stadard er 0 og uden denne
+
+\renewcommand{\headwidth}{1.0\textwidth}
+\setlength\headheight{12pt}%default=12pt
+\setlength\headsep{35pt}%default=25pt
+\setlength\footskip{40pt}%default=30pt
+
+\renewcommand{\headrule}{{\color{red}%
+\hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
+
+\renewcommand{\footrule}{{\color{blue}
+\hrule width\headwidth height\footrulewidth\vskip\footruleskip}}
+
+\fancyhead[RO,RE]{\includegraphics[width=1cm]{logoeks.png}}
+\lhead{\leftmark}
+\chead{Nykøbing F\\ \today}
+%\rhead{\rightmark}
+\lfoot{\rightmark}
+\cfoot{side \thepage} 
+\rfoot{\colorbox{green}{\bfseries{Finn}}}
+
+\section{Standard \LaTeX{} pakken}
+\LaTeX{} indeholder standarder for header og footer definitioner.  Den valgte option sættes med \verb"\pagestyle{..}". Der er 4 valgmuligheder:
+\begin{itemize}
+\item \verb"\pagestyle{empty}". Der er hverken header eller footer.
+\item \verb"\pagestyle{plain}". Ingen header. Footer vises kun med centreret sidenummer.
+\item \verb"\pagestyle{headings}". Ingen footer. Header indeholder kapitel/afsnit navn og sidenummer.
+\item \verb"\pagestyle{myheadings}". Ingen footer. Header med sidenummer og bruger defineret information.
+\end{itemize}
+Hvis man kun ønsker et layout på en enkelt side kan de samme option bruges i kommandoen \verb"\thispagestyle{...}". Hvis man ikke ønsker sidenummer eller heading på forsiden kan man f.eks. skrive \verb"\thispagestyle{empty}"  lige efter \verb"\maketitle".
+Layout af sidenummerering sættes med \verb"\pagenumbering{...}". Der er 5 muligheder:
+\begin{itemize}
+\item \verb"\pagenumbering{arabic}". Arabiske tal.
+\item \verb"\pagenumbering{roman}".Små romertal.
+\item \verb"\pagenumbering{Roman}". Store romertal.
+\item \verb"\pagenumbering{alph}". Små bogstaver.
+\item \verb"\pagenumbering{Alph}". Store bogstaver.
+\end{itemize}
+Sidenummeret er gemt i \verb"\thepage".
+Til mere avanceret layout anvendes pakken \verb"fancyhdr" til at styre avanceret layout af header og footer i dokumenter. Resten af afsnittet handler om denne pakke.
+
+\section{Fancyhdr pakken}
+For at anvende de specielle features i \verb"fancyhdr" pakken skal i stedet for en af standard options sætte \verb"\pagestyle{fancy}". Der kræves dog yderligere definitioner for at tilpasse headings og footer. \\
+Skriver man alene \verb"\pagestyle{fancy}" kommer kapitelnavn og nr. til højre i heading samt afsnit og nummer til venstre i heading. Der kommer en streg under heading. I footer kommer sidetal med tal. Der kommer ingen streg under footing.
+
+\subsection{Basis kommandoer}
+
+\verb"fancyhdr" definerer 6 felter til header og footer som kan tilpasses:
+\begin{itemize}
+\item \verb"\lhead{...}" LeftHeader er venstre header tekst. Den er venstrejusteret.
+\item \verb"\chead{...}" CenteredHeader er central header tekst. Den er centreret. 
+\item \verb"\rhead{...}" Rightheader er højre header tekst. Den er højrejusteret.
+\item \verb"\lfoot{...}" LeftFooter er venstre footer tekst. Den er venstrejusteret.
+\item \verb"\cfoot{...}" CenteredFooter er central footer tekst. Den er centreret. 
+\item \verb"\rfoot{...}" RightFooter er højre footer tekst. Den er højrejusteret.
+\end{itemize}
+De simple kommandoer gør det muligt at styre forskellig tekst på ulige og lige sidetal. Kommandoen \verb"\lhead[hej]{du}" skriver for eksempel \verb"hej" i venstre heading på lige sider og \verb"du" på ulige sider. 
+
+\subsection{markboth og markright}
+Udgangspunktet for header og footer settings er i \LaTeX{} to markers \verb"\markboth{}" og \verb"\markright{}".\\
+\verb"\markboth{}" indeholder to argumenter: venstre argument der giver nummer og navn for afsnit og højre argument med nummer og navn for underafsnit. I documentclass=article er der tale om section og subsection, hvorimod der f.eks. er tale om de højere kategorier chapter og section for documentclass=book.
+\verb"\markright{}" har højre argument i \verb"\markboth" dvs. nummer og navn på underafsnit. Disse to kommandoer opdateres automatisk og ændres når section og subsection numre og navn ændres. 
+
+\subsection{leftmark og rightmark}
+Til at sætte den endelige tekst i header og footer med variabel tekst anvendes de to kommandoer \verb"\leftmark" og \verb"\rightmark". Navnene skyldes dels at de ofte bruges til hhv venstre og højre side i dobbeltsidet tekst og dels sammenhængen til \verb"\markboth". \\
+\verb"\leftmark" = venstre argument i sidste \verb"\markboth" på siden=afsnitsnavn og nummer til slut på siden.\\
+\verb"\rightmark"=højre argument i første \verb"\markboth" på siden=underafsnitsnavn og nummer ved start på siden.\\
+Man kan hente en del af den tekst der hentes med \verb"\leftmark" og \verb"\rightmark". \verb"\thesection" og \verb"\thesubsection" henter numrene. Hvis man ønsker afsnitnavn eller underafsnitsnavn alene er dette muligt, men det kræver en re-definition.
+\verb"\leftmark" indeholder afsnitsinformation (section) og kan omdefineres ved at omdefinere \verb"\sectionmark". Her er et eksempel hvor den nye tekst i \verb"\section" er: Hej \verb" Afsnitnummer Afsnitsnavn"\\
+\verb"\renewcommand{\sectionmark}[1]{\markboth{Hej"\\
+\verb"\ \thesection. \ #1}{}}" \\
+Hvis der for eksempel er tale et afsnit 2 som hedder Fødsel, er det denne tekst der vises af \verb"\leftmark": Hej 2. Fødsel. Bemærk, at den sidste \verb"{}" er definitionen af højre side i \verb"\markboth" altså \verb"\rightmark" eller nummer og navn på underafsnit som er tom i denne definition da det er afsnit vi sætter.\\
+På samme måde kan \verb"\rightmark" eller underafsnittet omdefineres med\\ \verb"\renewcommand{\subsectionmark}[1]{\markright{Underafsnit"\\ \verb"\ \thesubsection. \ #1}." Bemærk, at \verb"\markright" kun har et argument.
+
+
+\subsection{Andre parametre}
+Udover disse to kommandoer kan følgende indsættes direkte i headers og footers.
+\begin{itemize}
+\item \verb"\thesection" og \verb"\thesubsection" er nummeret på hhv. section og subsection. På samme måde med andre kategorier såsom \verb"\thechapter". Nummeret hentes med \verb"\the..".
+\item \verb"\thepage" er aktuel sidenummer.
+\item\verb"\thedate" er aktuel dato.
+\end{itemize}
+Desuden kan der selvfølgelig indsættes fast tekst i headers og footers.\\
+
+\subsection{Store og små bogstaver}
+Hvis ikke der anvendes en renewcommand anvendes standard som er nummer og navn for hhv. afsnit og underafsnit. I dette tilfælde skrives navnene med store bogstaver dette kan afhjælpes med kommandoen:\\ \verb"\lhead{\nouppercase{\rightmark}}".\\ Tilsvarende kan uppercase efter en renewcommand tvinges med kommandoen:\\ \verb"\lhead{\MakeUppercase{\rightmark}}".
+\subsection{Generelle kommandoer}
+Istedet for kommandoerne \verb"\lhead, \chead osv." kan disse mere generelle kommandoer anvendes:
+\begin{itemize}
+\item \verb"\fancyhead" 
+\item \verb"\fancyfoot"
+\end{itemize}
+Her kan placeringen styres med 3 selectors: 
+\begin{itemize}
+\item \verb"L=Left" 
+\item \verb"C=Center"
+\item \verb"R=Right"
+\end{itemize}
+Samtidigt kan der skelnes mellem lige og ulige sider med selectors:
+\begin{itemize}
+\item \verb"O=Odd=Ulige" 
+\item \verb"E=Even=Lige"
+\end{itemize}
+Disse to eksempler giver sidenummerering i centrum for både lige sider og ulige sider:
+\begin{itemize}
+\item \verb"\fancyfoot[CO,CE]{\thepage}"
+\item \verb"\fancyfoot[C]{\thepage}"
+\end{itemize}
+Denne giver den definerede leftmark til venstre på ulige og lige sider:
+\begin{itemize}
+\item \verb"\fancyhead[LO,LE]{\leftmark}" 
+\end{itemize}
+
+\subsection{Helt generel styring}
+Der findes en endnu mere generel kommando - \verb"\fancyhf"  der dækker både headings og footings. Styringen af header eller foot foretages med selector: 
+\begin{itemize}
+\item \verb"H=Header" 
+\item \verb"F=Foot"
+\end{itemize}
+For eksempel giver \verb"\fancyhf[COF,CEF]{\thepage}" sidenummer i centrum af foot for både lige og ulige sider. Kommandoen \verb"\fancyhf{}" kan bruges til at slette alle tidligere headings og footings. \\
+Faktisk er det også med de simple kommandoer muligt at styre forskellig tekst på ulige og lige sidetal. Kommandoen \verb"\lhead[hej]{du}" skriver for eksempel \verb"hej" på lige sider og \verb"du" på ulige sider. 
+\subsection{Bredde, højde og afstand}
+Bredden af header og footer kan sættes med \verb"\fancyhfoffset[hvor]{length}". For eksempel giver kommandoen \verb"\fancyhfoffset[LH]{1cm}" en ekstra længde på 1 cm i venstre header. Selectors er som ovenfor, blot kan \verb"C" i sagens natur ikke anvendes. På samme måde giver \verb"\fancyhfoffset[RH]{-1cm}" et offset på -1 cm af højre header.\\
+Højden af header og footer kan sættes med følgende parametre:
+\begin{itemize}
+\item headheight er højden af header. Default er 12pt. Hvis den sættes lavere end teksten i header ædes af øvre margin.
+\item headsep er afstand fra header til brødtekst. Default er 25pt.
+\item footskip er afstanden fra underside af brødtekst til underside af footer. Default er 30pt.
+\end{itemize}
+ For eksempel sætter \verb"\setlength\headheight{12pt}" højden af header til 12pt. Afstanden mellem header og footer og brødtekst kan sættes med for eksempel \verb"\setlength\headsep{25pt}".
+\subsection{Farvet ruler}
+Hvis ruler skal farves er det nødvendigt at redefinere den holder der genererer ruleren. Det er hhv. \verb"\headrule" og \verb"\footrule". Her er vist to eksempler:\\
+\verb"\renewcommand{\headrule}{{\color{red}"\\
+\verb"\hrule width\headwidth height\headrulewidth\vskip-\headrulewidth}}"\\
+og\\
+\verb"\renewcommand{\footrule}{{\color{blue}"\\
+\verb"\hrule width\headwidth height\footrulewidth\vskip\footruleskip}}"\\
+I begge tilfælde foregår redifinitionen helt fra bunden. Der tegnes en vandret linie med \verb"\hrule" med den ønskede farve. Bredden af denne sættes lig med bredden af ruleren. Denne er standard lig med textwidth men kan for eksempel sættes 10 procent bredere med kommandoen\\ \verb"\renewcommand{\headwidth}{1.1\textwidth}" \\eller som nævnt ovenfor med \verb"\fancyoffset". Tykkelsen af ruleren sættes lig med \verb"\headrulewidth" eller \verb"\footrulewidth". Disse kan sættes med kommandoerne:\\ \verb"\renewcommand{\headrulewidth}{0.4pt}" og\\ \verb"\renewcommand{\footrulewidth}{0.4pt}".\\ Husk at fodruler har standardtykkelsen 0pt, så den skal sættes aktivt hvis den skal vises. Til slut i definition af ruler korrigeres på den lodrette afstand.
+\subsection{Farver og billeder}
+Tekstbaggrund kan som altid farves med \verb"\colorbox". Her er et eksempel:\\
+\verb"\rfoot{\colorbox{green}{\bfseries{Finn}}}"\\
+Der kan på normal vis indsættes billeder i header og footer. Men pas på med størrelsen. Her er et eksempel:\\
+\verb"\fancyhead[RO,RE]{\includegraphics[width=1cm]{finn.png}}".
+\end{document}
