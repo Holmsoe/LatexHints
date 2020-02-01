@@ -1,0 +1,55 @@
+%Example with userdefined section
+%First we redefine the section command to be centralised
+%Secondly we dfine a completely new section \Gsection with own counter and inputtext
+%Testkommentar1
+
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsthm,amsmath,amsfonts,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage[T1]{fontenc}
+
+\title{\LaTeX{} Tilpasning af Section kommando}
+
+\newcommand{\snak}{\noindent Charles Robert Darwin was born in Shrewsbury, Shropshire, England on 12 February 1809 at his family home, the Mount.[16] He was the fifth of six children of wealthy society doctor and financier Robert Darwin, and Susannah Darwin (noe Wedgwood).}
+
+\makeatletter
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                        	{-3.5ex \@plus -1ex \@minus -.2ex}%
+                                {2.3ex \@plus.2ex}%
+                                {\centering\normalfont\Large\bfseries}}
+\makeatother
+
+%Her defineres en tæller. Den går en gang op hver gang den anførte kommando kaldes.
+\newcounter{sectionNr}
+\newcommand{\SectionCount}{\stepcounter{sectionNr}}
+%Husk at en tæller printes med den tilsvarende \the.., altså \thesectionNr her.
+
+\newcommand{\Gsection}[1]{
+\vspace{3.5ex}
+\begin{center}
+\begin{Large}
+\begin{bf}
+\thesectionNr. #1
+\end{bf}
+\end{Large}
+\end{center}
+\vspace{2.3ex}
+}
+
+\begin{document}
+\maketitle
+\section{Første afsnit}
+\snak
+\section*{Andet afsnit-uden nummer}
+\snak
+\snak
+\SectionCount
+\Gsection{ugh}
+\snak
+\SectionCount
+\Gsection{bøh}
+\snak
+
+\end{document}
