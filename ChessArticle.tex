@@ -1,0 +1,127 @@
+\documentclass{article}
+%\documentclass[landscape,a4paper,12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{array}
+\usepackage{mathtools}
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{subfig}
+\usepackage{skak}
+\usepackage{chessboard}
+\usepackage{hyperref} %hyperref skal være den sidste pakke
+
+
+
+\begin{document}
+
+%\title{Finns Hanham varianter}
+
+%\author{Finn Andersen}
+%\date{\today}
+%\maketitle
+
+%\begin{abstract}
+%Jeg leger lidt med skak-package.
+%\end{abstract}
+
+%Bemærk, at \wmove kan give "frie" varianter, men at der skal et mellemrum mellem led
+%For eksempel: \wmove{23\ Bb2\ Kg5\ 24\ Nf3\ Qa1}
+
+\setchessboard{smallboard,showmover=false,inverse=true}
+\styleC
+\begin{multicols}{2}
+
+%\section{Hovedvariant}
+\begin{bf}
+\begin{Large}
+\noindent 1     Hovedvariant
+\end{Large}
+\end{bf}\\\\
+Når man spiller Philidor vil man gerne nå frem til Hanham opstillingen. Og så er det jo rart at vide lidt om hvad der så skal ske...
+Hanham opstår efter trækkene:\\ 
+\newgame
+\mainline{1.e4 d6 2. d4 Nf6 3. Nc3 Nbd7 4. Nf3 e5 5. Bc4 Be7 6. O-O c6}
+Bemærk, at jeg spiller \variation{6...c6} og ikke \variation{6...O-O}. Dette giver en mere forceret trækfølge.
+\mainline{7. a4 O-O}
+\chessboard
+\begin{center} Hanham opstilling \end{center}
+
+Hovedvarianten for hvid er nu \mainline{8. Re1} Hvid har en række alternativer: \variation{8. Qe2} behandles i afsnit 2, \variation{8. Ba2} behandles i afsnit 3 og øvrige varianter behandles i afsnit 4.
+Efter \variation{8. Re1} spiller jeg den oftest spillede variant \mainline{8...b6} Sort har en række gode muligheder såsom \variation{8...Re8}, \variation{8...Qe7},\variation{8...a5} og \variation{8...exd4}. En interessant mulighed er den såkaldte Pickett shuffle \variation{8...Qe8?! 9. h3 Bd8 10. a5 Bc7 11. d5}. Denne ide er dog mere oplagt i forbindelse med \variation{8...a5}. Trækket \variation{8...b6} har flere ideer. Selvom det ser passiv ud, er det måske det mest aktive træk for sort. Det forbereder en ekspansion på dronningefløjen.\\\\
+\begin{bf}
+\begin{large}
+\noindent 1.1     Hvid spiller 9  h3
+\end{large}
+\end{bf}\\\\
+Hvids træk \mainline{9. h3} er et godt eksempel på de spillemønstre sort skal være opmærksom på. Ideen med hvids træk \bmove{h3} er at forhindre sort i at komme til g4 med springer eller løber. Dette træk er en naturlig forberedelse af \wmove{Be3}. Det er dog muligt i mange varianter at undvære dette træk, da \wmove{Ng4} ikke altid er godt umiddelbart efter \wmove{Be3}. På alle hvids 9. træk undtagen \variation{9. d5} (se afsnit 1.5) kan sort spille hovedideen: \mainline{9...a6}
+\chessboard
+
+Sort ønsker at spille \wmove{b5} hvis det er muligt. I nogle tilfælde er sort dog tilfreds med opstillingen med \wmove{b6} og \wmove{a6} da det giver mulighed for at besvare hvids \wmove{d5} med \wmove{c5} og opnå mere plads på dronningefløjen. Denne stilling opstod i partiet Balogh(2662)-Delchev(2629) i 2011 efter en anden trækfølge. Vi følger dette parti videre:
+\mainline{10. Ba2} 
+Dette træk ser umiddelbart mærkeligt ud. Det er dog tæt knyttet til de hvide planer. Hvid ønsker at spille \wmove{Nh4} efterfulgt af \wmove{Nf5} for at lægge tryk på den sorte kongestilling. Ofte kan dette træk forberedes med \wmove{dxe5}. Hvis sort slår med bonden er det sværere for ham, at finde et godt felt til \wmove{Nd7} som i tilfælde af \wmove{Nh4} gerne vil flytte for at åbne for \wmove{Bc8} der må dække feltet \wmove{f5}. Sort ønsker derfor ofte at slå tilbage på \wmove{e5} med \wmove{Nd7}. Hvis hvids løber nu står på \wmove{c4} må den flytte og sort kan i næste træk bytte på \wmove{f3} hvorved hvids springermanøvre er ødelagt.
+
+Hvis sort spillede \wmove{9... Bb7?!} i stedet for \wmove{9...a6} kunne hvid spille \wmove{10. Ba2!} efterfulgt af \wmove{11. dxe5} og \wmove{12. Nh4} hvorefter sort får svært ved at dække \wmove{f5}. 
+
+En anden pointe med \variation{10.Ba2} som ofte angives i bøger, er at undgå trussel efter sorts \wmove{b5}. Dette er dog mere et spørgsmål om trækfølge og er ikke den vigtigste årsag til trækket. 
+
+Med trækket \wmove{Ba2} sikrer hvid også en rolig plads til løberen hvorfra den kan skyde på \wmove{f7}.\wmove{Ba2} kan også spilles i træk 8 og træk 9 og fører til lignede varianter, se afsnit 3.
+
+Hvid har en række alternativer i denne stilling:\\\\
+\begin{bf}Alternativ 1: \variation{10. d5 c5}\end{bf}\\
+\variation{10. d5 cxd5?! 11. Nxd5 Bb7} er ikke godt for sort. 
+I diagramstillingen efter \wmove{10...c5} vil hvid forsøge at få aktivitet på dronningefløjen med \wmove{b5}. Dette kan forberedes med \wmove{Rb1} men kan også underbygges endnu mere med \wmove{Bf1}, \wmove{Nd2}, \wmove{Nc4}. Sort kan enten støde frem på kongefløjen med \wmove{g6},\wmove{f5} eller prøve at modgå hvids planer på dronningefløjen med \wmove{Ne8},\wmove{Nc7}, \wmove{Rb8} og \wmove{b5}. 
+\\
+\fenboard{r1bq1rk1/3nbppp/pp1p1n2/2pPp3/P1B1P3/2N2N1P/1PP2PP1/R1BQR1K1 w - - 0 10}
+\chessboard
+
+Jeg vælger planen på dronningefløjen og en typisk trækfølge kunne være:\\
+\variation{10. d5 c5 11. Bf1 Ne8 12. Nd2 Nc7 13. Nc4 Rb8} eller\\
+\variation{10. d5 c5 11. Rb1 Qc7!?} Sort kan lægge pres på c-linien. Måske \wmove{Bb7} og \wmove{Rc8}.\\\\
+\begin{bf}Alternativ 2: \variation{10. Be3 Rb8}\end{bf}\\
+\fenboard{1rbq1rk1/3nbppp/pppp1n2/4p3/P1BPP3/2N1BN1P/1PP2PP1/R1BQR1K1 w - - 0 10}
+\chessboard
+
+Normalt anbefales her 10...\wmove{Bb7}, men som i hovedvarianten bør \wmove{Rb8} også være godt her. Tårnet har forladt dækningen af \wmove{a6}, men sort kan nå at spille \wmove{b5} før hvid kan true \wmove{a6}.\\
+For eksempel:\\ \variation{10. Be3 Rb8 11. Qd3 b5 12. axb5 axb5 13. Ba2 b4 14. Ne2}. Den hvide dronning skal stå på \wmove{d3} og ikke \wmove{e2} da springeren skal til \wmove{e2}.\\ Hvid kan forsøge at lægge pres på \wmove{a6} med \wmove{d5}.\wmove{c5} er nu dårligt, da tårnet skal tilbage til \wmove{a8} hvis hvid spiller \wmove{Qe2}. Men varianter som:\\
+\variation{10. Be3 Rb8 11. d5 b5! 12. axb5 axb5 13. Bd3 cxd5 14. Nxd5 Nxd5 15. exd5 f5} og\\
+\variation{10. Be3 Rb8 11. d5 b5! 12. dxc6 bxc4 13. cxd7 Bxd7} er fine for sort.\\ Også \\
+\variation{10. Be3 Rb8 11. d5 b5! 12. axb5 cxb5!? 13. Bd3 Qc7 14. Qe2 Nb6 15. Nd2 Nfd7 16. Na2 f5 17. exf5? Nxd5} er godt for sort.\\\\
+\begin{bf}Alternativ 3: \variation{10. Bg5 Bb7}\end{bf}\\
+\fenboard{r2q1rk1/1b1nbppp/pppp1n2/4p1B1/P1BPP3/2N2N1P/1PP2PP1/R2QR1K1 w - - 0 10}
+\chessboard
+
+Ideen med \wmove{10. Bg5} er at bytte på f6 og herefter spille \wmove{11.d5}. Uden springeren på f6 er d5 svækket for sort og det er ikke muligt, at spille for eksempel:\\  \variation{10. Bg5 Bb7 11. d5 cxd5}, da sort ikke kan få kontrol over d5 efterfølgende og lægge pres på e4. Det er heller ikke godt for sort at spille:\\ \variation{10.Bg5 Rb8 11. d5 c5} da hvid så kan angribe a6 med \wmove{12. Qe2}.
+Derfor er det bedste sorte træk \wmove{11...Bb7}.\\Jeg spiller varianten:\\ 
+\variation{10. Bg5 Bb7 11. dxe5 Nxe5! 12. Ba2 b5}.\\
+\fenboard{r2q1rk1/1b2bppp/p1pp1n2/1p2n1B1/P3P3/2N2N1P/BPP2PP1/R2QR1K1 w - - 0 10}
+\chessboard
+
+Kompliceret x er varianten:\\ \variation{10. Bg5 Bb7 11. dxe5 dxe5 12. Nh4 b5 13. Ba2 h6}. Derimod ser varianten:\\ \variation{10. Bg5 Bb7 11. dxe5 dxe5 12. Nh4 g6 13. Bh6 Re8 14. Nf3!} betænkelig ud for sort på grund af truslen \wmove{Ng5}.\\Sort skal passe på ikke at spille b5 for tidligt. Hvid truer hele tiden med \wmove{Bxf6} efterfulgt af \wmove{d5}. For eksempel er denne variant dårlig for sort:\\ \variation{10. Bg5 Bb7 11. Bb3 b5? 12. Bxf6! Bxf6 13. d5!}. Efter \wmove{11. Bb3} bør sort spille \wmove{11...Re8},\wmove{11...Qc7} eller \wmove{11...h6}. Hvis hvid spiller \wmove{d5} kan sort lukke dronningefljøjen med \wmove{c5} og angribe på kongefløjen. Dette giver dog en svaghed på a6. Så sort kunne også besvare \wmove{d5} med \wmove{Qc7} - dette giver en mere levende stilling.
+
+\fenboard{r1bq1rk1/3nbppp/pppp1n2/4p3/P2PP3/2N2N1P/BPP2PP1/R1BQR1K1 b - - 0 10}
+
+Vi går nu tilbage til hovedvarianten efter \wmove{10. Ba2}. I denne situation, hvor hvid ikke længere lægger pres på a6 er det muligt, at spille: 
+\mainline{10...Rb8!} 
+Herved forbereder sort \wmove{b5} og beholder løberen på c8 hvor den kan dække f5. Andre sorte træk er ikke gode. For eksempel giver \variation{10...b5? 11. axb5 cxb5} hvid en god bondestruktur og et stærkt punkt på d5. Varianten \variation{10...Bb7?! 11. dxe5 dxe5 12. Nh4 Nxe4? 13. Rxe4 Bxh4 14. Rxh4 Qxh4 15. Qd7} giver stor fordel for hvid. 
+Efter hovedvarianten er hvids mest logiske træk: 
+\mainline{11.Be3}
+\chessboard
+
+Hvid har dog en række alternativer:\\
+\variation{11. Bg5} giver lige spil, da det bliver svært for hvid at gennemføre manøvren \wmove{Nh4}, \wmove{Nf5} og sort er klar til b5. \\
+\variation{11. Qd3?! b5 12. axb5 axb5 13. Ne2 c5 14. c3 exd4! 15.cxd4 c4 16. Qc2 d5} med lige spil. \wmove{11. Qd3} skal dække e4 for at kunne omrokere c3-springeren. \wmove{13. b4} er også en mulighed i denne variant. Bemærk, at tårnet på b8 i modsætning til \wmove{Bb7} dækker b5 og derfor tillader ekspansion med c-bonden.\\
+\variation{11. dxe5?! dxe5 12. Nh4 Nc5} er lige spil. Hvis hvid spiller \wmove{Nf5} bliver springeren elimineret.\\ Vi vender nu tilbage til hovedvarianten og partiet  Balogh-Delchev
+\mainline{11...b5 12. axb5 axb5 13. b4 Qc7}
+
+
+\end{multicols}
+\end{document}
+
+
