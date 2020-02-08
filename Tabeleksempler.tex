@@ -1,0 +1,153 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsthm,amsmath,amsfonts,amssymb}
+\usepackage[utf8]{inputenc} %inputenc sørger for at der forstås æ, ø og å
+\usepackage[danish]{babel} %kapitler etc. får danske navne
+\usepackage[T1]{fontenc}
+
+%pakker til tabeller
+\usepackage{multirow}
+\usepackage{booktabs} % giver mulighed for \toprule, \midrule og \bottomrule
+%\usepackage[referable]{threeparttablex}
+%\setTableNoteFont{\footnotesize}
+
+%\renewcommand{\abstractname}{Opgaveformulering}%overskrift opgaveformulering
+%\tableofcontents{arabic}
+%\pagenumbering{arabic}
+
+\begin{document}
+
+\title{Demonstration af tabeller}
+\author{Finn Andersen\\Parkvej 14\\Nykøbing F\\\texttt{fa@faxekalk.dk}}
+\date{\today}
+\maketitle
+
+%\begin{abstract} 
+%\end{abstract}
+
+\section{Indledning}
+
+Her er et simpelt eksempel med makebox.Vandrette linier er med for illustration. Denne metode kunne være nyttig ved simpel alignment.\\
+%tabel med makebox
+\newcommand{\tabelbox}[3]{\makebox[0.2\columnwidth][l]{#1} \makebox[0.2\columnwidth][c]{#2} \makebox[0.2\columnwidth][r]{#3}}
+\makebox[0.63\columnwidth]{\hrulefill}\\
+\tabelbox{Hej med dig}{din dummenik}{det er mig}\\
+\makebox[0.63\textwidth]{\hrulefill}\\
+\tabelbox{en}{linie}{mere}\\
+\makebox[0.63\columnwidth]{\hrulefill}\\
+
+
+%\begin{tabular}{l r r} %antal kolonner bestemmes af antal placeringsdefinitioner l,c,r
+
+%\begin{tabular}{l |r || r|} %med lodrette linier. 
+%PS. lodret linie fås med AltGr og tast med apostrof øverst til venstre.
+
+\begin{tabular}{l|r|r}
+& afstand & masse \\
+\toprule
+%\hline % vandret linie
+Merkur  & 0.387 & 0.055 \\
+Venus & 0.723 & 0.815 \\
+\midrule
+Jorden & 1.000 & 1.000 \\
+Mars & 1.524 & 0.107 \\
+\cline{2-2} %horisontal linie under søjle 2 til 2 = søjle 2
+Jupiter & 5.203 & 317.83 \\
+Saturn & 9.555 & 95.159 \\
+\hline % vandret linie
+\hline %dobbeltlinie
+%bemærk, at lodrette linier brydes efter to vandrette.
+Uranus & 19.218 & 14.500 \\
+Neptun & 30.110 & 17.204 \\
+Pluto & 39.545 & 0.0025 \\
+\bottomrule
+\end{tabular}
+
+\section{Afsnit 1}
+
+\begin{tabular}{l|r|r@{,}l} % @{,} betyder, at det automatiske mellemrum fjernes og erstattes af ,
+%kan ikke bruges sammen med teksoverskrift
+%\hline % vandret linie
+Merkur  & 0.387 & 0&055 \\
+Venus & 0.723 & 0&815 \\
+Jorden & 1.000 & 1&000 \\
+Mars & 1.524 & 0&107 \\
+\cline{2-2} %horisontal linie under søjle 2 til 2 = søjle 2
+Jupiter & 5.203 & 317&83 \\
+Saturn & 9.555 & 95&159 \\
+\hline % vandret linie
+\hline %dobbeltlinie
+%bemærk, at lodrette linier brydes efter to vandrette.
+Uranus & 19.218 & 14&500 \\
+Neptun & 30.110 & 17&204 \\
+Pluto & 39.545 & 0&0025 \\
+\hline % vandret linie
+\hline %dobbeltlinie
+\end{tabular}
+
+\section{Afsnit 2}
+
+\begin{center}
+    \begin{tabular}{ | l | l | l | p{5cm} |} 
+    % bemærk, at sidste søjle har en specificeret bredde og er defineret med p for tekstwrapping
+    % uden denne vil teksten blot fortsætte.
+    
+    \hline
+    Day & Min Temp & Max Temp & Summary \\ \hline
+    Monday & 11C & 22C & A clear day with lots of sunshine.  
+    However, the strong breeze will bring down the temperatures. \\ \hline
+    Tuesday & 9C & 19C & Cloudy with rain, across many northern regions. Clear spells
+    across most of Scotland and Northern Ireland,
+    but rain reaching the far northwest. \\ \hline
+    Wednesday & 10C & 21C & Rain will still linger for the morning.
+    Conditions will improve by early afternoon and continue
+    throughout the evening. \\
+    \hline
+    \end{tabular}
+\end{center}
+
+\section{Afsnit 3}
+
+\begin{tabular}{|l|l|l|} \hline
+\multicolumn{3}{|c|}{Schedulers} \\ \hline
+\multirow{3}{*}{Immediate} & RR & Round Robin \\
+& EF & Earliest First \\
+& LL & Lightest Loaded \\ \hline
+\multirow{4}{*}{Batch} & MM & Min-Min \\ 
+& MX & Max-Min \\
+& DL & Dynamic Level \\ 
+& RC & Relative Cost \\ \hline
+\multirow{4}{*}{Evolutionary} & PN & This paper \\
+& ZO & Genetic Algorithm\\
+& TA & Tabu search~\cite{GLOV1986j}\\
+& SA & Simlulated Annealing \\ \hline
+\end{tabular}
+
+\end{document}
+
+\section{Konklusion}
+\begin{center}
+\begin{threeparttable}
+%\begin{tabular}{c !{\quad}  c !{\quad} ccc @{}c !{\quad} c}
+\begin{tabular}{c  c  ccc @{}c  c}
+\toprule
+                                  &      & \multicolumn{3}{c}{EDU\tnotex{tn:1}} &                       \\
+\cmidrule{3-5}
+                                  &      & NONE                                 & LOW  & HIGH &  &      \\
+\cmidrule{3-5}
+\multirow{3}{*}{edu\tnotex{tn:2}} & none & 0,13                                 & 0,19 & 0,06 &  & 0,38 \\
+                                  & low  & 0,11                                 & 0,25 & 0,11 &  & 0,47 \\
+                                  & high & 0,03                                 & 0,04 & 0,08 &  & 0,15 \\
+\midrule
+ Total                            &      & 0,27                                 & 0,48 & 0,25 &  & 1    \\
+\bottomrule
+\end{tabular}
+\begin{tablenotes}
+  \item[a] \label{tn:1} forklar hvad dette er
+  \item[b] \label{tn:2} forklar hvad dette er
+\end{tablenotes}
+\end{threeparttable}
+\end{center}
+
+
+\end{document}
