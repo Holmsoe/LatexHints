@@ -1,0 +1,263 @@
+\documentclass{article}
+%\documentclass[landscape,a4paper,12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage{multicol}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{subfig}
+\usepackage{hyperref} %hyperref skal være den sidste pakke
+
+\begin{document}
+
+\title{\LaTeX{} og MetaPost - Installation og pakker}
+
+\author{Finn Andersen}
+\date{\today}
+\maketitle
+
+\begin{abstract}
+Der kan være mange småproblemer ved installation af \LaTeX{}. De kan være knyttet til sti og filplacering eller den benyttede editor. Jeg giver her en metode som virker uden de store problemer. Den er baseret på pdf format. Herved undgås alle finurligheder i forbindelse med konvertering mellem forskellige filformater. De gængse pakker ved anvendelse af Latex gennemgås. Tag dem alle med som standard. Så er du nogenlunde sikker på, at du ikke finder en Latex guide som giver en masse kode uden at sige hvilken pakke der er nødvendig....:)
+\end{abstract}
+
+
+\section{Installation og kørsel}
+
+Det grundlæggende program der indeholder koden til både LaTex og MetaPost findes i programmet MikTex.
+Projektsiden er: \verb"http://miktex.org"
+
+\begin{itemize}
+\item Gå til downloadsiden for version 2.8. Version 2.9 kan indeholde bugs, men jeg er ikke sikker.
+\item Vælg Basic installer 2.8 og herefter run og kør 
+\item Accepter nu betingelserne.
+\item Vælg All users. 
+\item Accepter placering af program.
+\item VIGTIGT - Ved næste billede skal vælges:\\ \textbf{Install missing packages on the fly: ->Vælg YES.}
+\item Herefter kan programmet installeres.
+\end{itemize}
+
+Nu skal instillingerne ændres.
+\begin{itemize}
+\item Gå til Miktex programmet under Alle Programmer i startmenu. 
+\item Vælg Maintenance.
+\item Gå til roots. Vi skal nu sætte folder.
+\item Opret en folder med følgende sti: \verb"C:\FolderNavn\Tex\LaTex"
+\item Under roots vælges: Show MikTex maintained directories.
+\item Herefter ønsker vi at tilføje den nye folder.
+Vælg: Add.
+\item Vælg: Stien til \verb"C:\Foldernavn" men ikke resten af stien!
+\end{itemize}
+
+ \LaTeX{} skal kunne finde filerne. Det er et af de punkter der kan skabe forvirring.  
+
+\subsection{Køre \LaTeX{}}
+\begin{itemize}
+\item VIGTIGT: Vælg General og tryk derefter Refresh FNDB. Kun på denne måde kan filerne findes.
+\item BEMÆRK: Hver gang der kommer nye filer i folderne skal der trykkes FNDB for at genskabe kontakt.
+\end{itemize}
+For at køre programmer skal vi over i kommandolinien på DOS promt.
+\begin{itemize}
+\item I Vista kan man trykke \verb"cmd" i søge feltet. I ældre skal man skrive \verb"cmd" i Kør feltet.
+\item For at bevæge sig her, er det en fordel at kende de grundlæggende kommandoer i DOS.
+Her kan du finde de mest almindelige kommandoer:\\ \verb"http://www.computerhope.com/dostop10.htm"
+\item Skriv \verb"cd.." flere gange indtil du er i \verb"C:\" folderen.
+\item Gå herefter til aktuel folder med \verb"cd FolderNavn\Tex\LaTex".
+Nu er du i den rigtige folder og kan køre programmerne.
+\item For at køre programmet skal du i DOS kommandolinie (stadig i den rigtige folder) skrive:\\
+\textbf{pdflatex} Filnavn 
+\end{itemize}
+Herved dannes outputfil i \verb".pdf" format.
+Inputfilen til \verb"pdflatex" skal være en \verb".tex" fil. 
+Filnavnet på output bliver \verb"Filnavn.pdf".
+Under dannelse af output skaber \LaTeX{} en del ekstrafiler som anvendes i den videre proces. 
+Men nogle gange kan filerne ikke findes før der ikke er kørt en FNDB. HUSK: FNDB opdaterer \LaTeX{} søgestier med aktuelle filer. 
+Virker kørsel ikke første gang og er der en fejlmeddelelse om manglende filer skal du køre FNDB og prøve igen. Efter installation er det en god ide at starte \verb"Refresh FNDB".\\ Gå til \verb"Alle programmer->Miktex->Maintenance->Settings". 
+Hvis der i \LaTeX{} programmet henvises til en MetaPost fil, skal den ligge i samme folder.
+
+\subsection{Køre MetaPost}
+Når du kører MetaPost omdanner du tekstfilen i \verb".mp" format til en række \verb".eps" filer, en for hver figure i MetaPost filen. \verb"eps" format kan også læses af \LaTeX{} men danner en \verb".DVI" fil som resultat. Denne kan så ad omveje omdannes til \verb".pdf". I denne guide går vi direkte til \verb".pdf" filer. Så processen er:
+\begin{enumerate}
+\item Omdan textfilen med MetaPost koden i \verb".mp" format til en MetaPost fil i \verb".eps" format
+\item Omdan de dannede figurefiler i \verb".eps" format til \verb".pdf" filer der kan importeres til \LaTeX{}.
+\end{enumerate}
+\begin{itemize}
+\item Vil du køre en MetaPost fil skal du i DOS i den rigtige sti skrive:\\
+\textbf{Mpost} Filnavn.
+Filen kan skrives uden extension. MetaPost filen skal have extension \verb".mp".
+Herved dannes \verb".eps" filer der kan importeres til Latex. Hvis MetaPost filen indeholder kode til flere MetaPost figurer dannes der en fil for hver figur. Disse bliver placeret i det aktuelle arkiv. Hver fil har sin egen extension - f.eks. \verb".1" - selvom de alle er \verb".eps" filer.
+\item Hvis det ikke virker første gang, kan du prøve at refreshe med FNDB (evt. skal åbne pdf filer lukkes) og køre igen.
+\end{itemize}
+
+Vi skal nu omdanne de dannede \verb"eps" filer til en \verb".pdf" filer. Dette gøres med det indbyggede program \verb"epstopdf".
+Hvis der er flere \verb"eps" filer skal der køres en konvertering for hver fil. Her er vist et eksempel for konvertering af \verb"eps" filen med navnet \verb"Filnavn.1".
+Hvis der er flere \verb"eps" filer må de først omdøbes, da de ellers ville blive konverteret over i den samme\verb".pdf" fil.
+\begin{itemize}
+\item Omdøb filen \verb"Filnavn.1" til f.eks. \verb"FilnavnFig1.1". Dette er kun nødvendigt hvis der er flere figurer der er dannet fra MetaPost filen.
+\item Skriv i \verb"DOS" prompten:\\
+\textbf{Epstopdf} FilnavnFig.1\\
+Medtag denne gang extension. Herved dannes filen \verb"FilnavnFig1.pdf". 
+\item Også her skal du refreshe med FNDB inden næste kørsel.
+\end{itemize}
+Da output for kørsel af \LaTeX{} dokumentet er \verb".pdf" må ingen af de resulterende figurfiler fra MetaPost have samme navn som \LaTeX{} filen. Ellers kommer output i karambolage med output fra \LaTeX{}.
+Husk, at både MetaPost og \LaTeX{} laver nye filer første gang en fil køres. Derfor opstår der fejl ved næste kørsel hvis ikke du går til MikTex og kører FNDB først. Men luk først alle filer der ligger i folderen. \\
+Hvis du retter i \verb".mp" eller \verb".tex" filen og kører igen. Så husk at lukke evt. åbne \verb".pdf" filer. Ellers kan programmerne ikke skrive til filerne.
+
+\section{Testeksempel}
+
+Her er et eksempel som bringer dig igennem hele processen. Du skal ikke bekymre dig om koderne for \LaTeX{} eller MetaPost. De bliver forklaret senere. Formålet med denne test er at checke om dit system er sat rigtigt op. Bemærk, at dette eksempel er baseret på Texworks standard encoding. Se iøvrigt pakken \verb"inputenc" nedenfor. 
+
+\subsection{Editor til \LaTeX{} og MetaPost}
+Der findes mange editorer til at håndtere \LaTeX{} og MetaPostfiler. Her kan nævnes nogle:
+\begin{itemize}
+\item Texnic center
+\item Emacs 
+\end{itemize}
+Det kræver dog ekstra studier at sætte dem op og anvende dem. Jeg har selv haft problemer med at få dem til fungere ordentligt - f.eks. i forhold til den nye Adobe version. Og hvad angår kørsel af MetaPost - især anvendelse af matematikformler og labels i MetaPost.\\ Så her bruger vi TeXworks.
+Fordelen er, at Texworks følger med den MikTex installation du allerede har lavet.
+For at lave det nødvendige \LaTeX{} dokument skal du gøre følgende:
+\begin{itemize}
+\item Gå til Programmer og find MikTex.
+\item Under MikTex vælg \verb"Texworks".
+\item Programmet er nu startet og du skal kopiere koden til \LaTeX{} filen herfra.
+\item Herefter  gemmer du filen som en \verb".tex" fil under navnet DemoLatex.tex i folderen \verb"C:\FolderNavn\Tex\Latex".
+\item Opret ny fil i Texworks under File og New.
+\item Kopier koden fra MetaPost filen nedenfor.
+\item Gem filen som en \verb".mp" fil under navnet DemoMetaPost.mp i folderen \verb"C:\FolderNavn\Tex\Latex".
+\end{itemize}
+
+\subsection{\LaTeX{} koden}
+
+\begin{verbatim}
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsthm,amsmath,amsfonts,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage[danish]{babel}
+\usepackage[T1]{fontenc}
+\title{\LaTeX{} og MetaPost - Installation og pakker}
+
+\begin{document}
+\maketitle
+
+\section{Første afsnit}
+Her er de første billeder:
+\includegraphics[width=0.3\textwidth]{DemoMetaPostFig0}
+\includegraphics[width=0.3\textwidth]{DemoMetaPostFig1}
+
+\end{document}
+
+\end{verbatim}
+
+\subsection{MetaPost koden}
+\begin{verbatim}
+prologues:=2;
+verbatimtex
+%&latex
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\begin{document}
+etex
+
+beginfig(0);
+draw (0,0)--(2cm,5cm)--(5cm,1cm)--(0,0);
+label.bot(btex $\displaystyle A$ etex,(0,0));
+label.top(btex $\displaystyle B$ etex,(2cm,5cm));
+label.rt(btex $\displaystyle C$ etex,(5cm,1cm));
+label.rt(btex $\frac{-B+\sqrt{B^2-4AC}}{2A}$ etex,(2cm,-1cm));
+endfig;
+
+beginfig(1);
+draw fullcircle scaled 3cm shifted (5cm,3cm);
+label(btex $centrum$ etex,(5cm,3cm));
+endfig;
+
+end
+\end{verbatim}
+
+
+\subsection{MetaPost filer}
+\begin{itemize}
+\item Åbn en ny fil i \verb"TeXworks"
+\item Kopier koden fra dette eksempel til \verb"TeXworks"
+\item Gem filen i \verb"C:\Foldernavn\Tex\Latex" under navnet \verb"DemoMetaPost.mp". Pas på der ikke kommer ekstra extension \verb".tex" på gennem editoren.
+\item Kør FNDB så MetaPost kan finde filen.
+\item Gå til \verb"C:\Foldernavn\Tex\Latex" i DOS.
+\item Skriv \verb"mpost DemoMetaPost" i Dos for at køre MetaPost filen. Uden extension.
+\item Du vil nu få en fejlmelding, der skyldes at sammenhængen i MetaPostfilerne går i 2 tempi. Du skal derfor køre en FNDB for at koble til de nydannede filer.
+\item Skriv igen  \verb"mpost DemoMetaPost"
+\item Du har nu fået to filer dannet: \verb"DemoMetaPost.0" og \verb"DemoMetaPost.1".
+\item Gå nu til \verb"C:\Foldernavn\Tex\Latex" i windows for at ændre navne på de dannede filer.
+\item \verb"DemoMetaPost.0" ændres til \verb"DemoMetaPostFig0.0" og \verb"DemoMetaPost.1" ændres til \verb"DemoMetaPostFig1.1".
+\item Kør FNDB så filerne kan findes
+\item Konverter første fil til pdf med \verb"epstopdf DemoMetaPostFig0.0"
+\item Konverter anden fil til pdf med \verb"epstopdf DemoMetaPostFig1.1"
+\item Du vil nu se at der er kommet to nye pdf filer i folderen.
+\item Kør igen FNDB så \LaTeX{}  kan finde filerne.
+\end{itemize}
+
+\subsection{\LaTeX{} filer}
+\begin{itemize}
+\item Kør igen FNDB så \LaTeX{}  kan finde de nydannede \verb"pdf" filer fra MetaPost.
+\item Skriv \verb"pdflatex DemoLatex" i \verb"DOS" kommandolinien.
+\end{itemize}
+Hvis du kan få dette eksempel til at virke, er du godt kørende. En af de svære for mig har været at få labels på figurer i MetaPost (for eksempel bogstaver med matematik formatering i hjørnerne på en trekant, eller at få matematikformler skrevet i MetaPost. Hvis du kan se både labels og en formel i den resulterende \verb"pdf" dokument \verb"DemoLatex.pdf" virker det. Tillykke.
+
+\section{Pakker}
+\subsection{Matematik}
+\begin{itemize}
+\item amsmath - Indeholder en hel del basale funktioner til matematiklayout som equation. Indeholder mange features til hensigtsmassig aligning og nummerering af ligninger. Mange  latex guides antager denne pakke uden at navne den. Uden denne ingen matematik...
+\item amsfonts-matematikfonts
+\item amssymb-Alle specialsymboler til matematik
+\item amsthm- layout for forskellige theorem og bevis sætninger
+\end{itemize}
+\subsection{Sprog}
+\begin{itemize}
+\item inputenc - Kan håndtere forskellig sprogspecialiteter som input. Sørger for, at der kan forstås æ, ø og å. 
+\begin{itemize}
+\item Bemærk at setting utf8 ikke altid vil virke. Den afhænger af hvilket encoding editoren gemmer filen med. Her anvender jeg TeXworks. Dette kunne bliver et problem ved skift til anden editor.
+\item latin1 er mere normalt end utf8
+\end{itemize}
+\item babel-Dette er en sprogpakke, der anvender layout fra det/de valgte sprog. Overskrifter, fodnoter etc. bliver sat med det vlagte sprog. Orddeling bliver iht. sproget. Og mange andre specialiteter.
+\item fontenc- Denne giver encoding for output fonts (hvor inputenc var for inputkode). Brug T1 option. Det er europæiske latinske fonts. Der findes T2 pakker med specielle fonts såsom kyrillisk.
+\item verbatim-\verb"\begin{verbatim} bla bla. \end{verbatim}" environment er del af \LaTeX{} men pakken verbatim giver mulighed for udvidede funktioner med håndtering af tekst i \LaTeX{} filer. 
+\item lettrine - Til tekster. Giver mulighed for at et begyndelsesbogstav i et afsnit er stort og fylder flere linier.
+\item calligra- giver mange fancy fonts såsom skråskrift.
+\end{itemize}
+
+\subsection{Layout}
+
+\begin{itemize}
+\item graphicx Giver mulighed for meget fleksibel håndtering af importeret grafik. Beskæring, skalering, drejning, etc.
+\item fancyhdr - til fancy headers og footers. Er ikke en del af \LaTeX{} standard pakker. Installeres on the fly hvis MikTex er sat rigtig op. Dette kan ikke ske gennem en firewall og man skal være på nettet første gang den køres. Ellers kommer der fejlmeddelelse. Dette gælder alle pakker der ikke er en del af \LaTeX{} standarden.
+\item color Giver mulighed for håndtering af farver i \LaTeX{} dokumenter.
+\item hyperref kan lave referencer i pdf og mange andre nyttige ting. Skal være den sidste pakke på listen!
+\end{itemize}
+
+\subsection{Tabeller og figurer}
+\begin{itemize}
+\item subfig. Installeres on the fly. Avanceret layout af indsat grafik, figurer, tabeller, etc. De kan placeres side om side, gives fælles figurnummer etc. Kræver pakkerne \verb"caption,everycel,keyval,ragged2e". 
+\item caption Giver mulighed for detaljeret styring af figurtekst og nummer.
+\item everysel Hjælpepakke der er nødvendig for at pakken ragged2e kan virke
+\item keyval Hjælpepakke for pakken subfig
+\item ragged2e Giver mulighed for ragged med orddeling
+\item booktabs. Installeres on the fly. Til tabellayout. En del nye kommandoer såsom toprule, midrule og bottomrule.
+\item multicol.Giver mulighed for flere kolonner i tekst også forskelligt antal på samme side.
+\item multirow. Flere linier i en kolonne af en tabel og måske kun en linie i en anden kolonne.
+\item dcolumn Anvendes i tabeller eller alignments til at aligne tal lodret og ved decimal punkt. D er en søjlespecifier med 3 argumenter.
+\item tabularx Styring af søjlebredde i tabel
+\item threeparttablex Til fodnoter i tabeller.
+\item wrapfig. Til at få tekst til at flyde rundt om en figur.
+\item float. Forbedret styring af floats
+\item setspace. Giver mulighed for at styre linieafstand i et dokument.
+\end{itemize}
+
+
+
+\end{document}
