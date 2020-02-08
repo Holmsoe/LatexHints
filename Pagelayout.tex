@@ -1,0 +1,162 @@
+\documentclass{article}%standard uden ekstradefinitioner
+%\documentclass[landscape,a4paper,12pt]{article}%horisontal, papirstørrelse og skriftstørrelse
+\usepackage{graphicx}%nødvendig for grafik
+\usepackage{amsthm,amsmath,amsfonts,amssymb}%nødvendige for god matematik
+%\usepackage[version=3]{mhchem}%Kemipakke
+%\usepackage{parskip}%For at undgå indrykning ved nyt afsnit
+\usepackage[utf8]{inputenc} %inputenc sørger for at der forstås æ, ø og å
+\usepackage[danish]{babel} %kapitler etc. får danske navne, dansk orddeling
+\usepackage[T1]{fontenc}% diverse font såsom umlaut og apostrof
+
+\usepackage{geometry}%Giver mindre margins i siderne og dermed større side
+%\usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm]{geometry}%Giver fuld styring af margins.
+%\usepackage{fullpage}%større udnyttelse af siden. Større side end med "geometry"
+
+\usepackage{fancyhdr}%giver header og footers til dokumentet
+\usepackage{multicol}%bedre styring af flere kolonner
+
+%\tableofcontents{arabic}%indholdsfortegnelse
+%\listoffigures%liste over figurer
+
+\pagenumbering{Roman}%sidenummerering
+%muligheder for setting af pagenumber
+%arabic=arabic numerals
+%roman=lower case roman numerals
+%Roman=upper case roman numerals
+%alph=lower case letter
+%Alph=upper case letter
+
+
+\title{Demonstration af PageLayout}
+\author{Finn Andersen\\Parkvej 14\\Nyk{\o}bing F\\\texttt{fa@faxekalk.dk}}
+\date{\today}
+
+\begin{document}
+
+\maketitle 
+% Det er vigtigt at \maketitle står efter begin, da der ellers vil komme rod med førstesideskift. Latex regner sidens start uden titel.
+
+%\thispagestyle{fancy} % anvendes hvis der ønskes footer på titelsiden. \maketitle overskriver header/footer info.
+% denne skal stå under \maketitle
+
+%forskellige fonts
+%\emph{..} %emphasis typically italics 
+%\textrm{..}  %roman font family  
+%\textsf{..}  %sans serif font family  
+%\texttt{..}  %teletypefont family this is a fixed-width or monospace font 
+%\textup{..}  %upright shape the same as the normal typeface 
+%\textit{..}  %italic shape  
+%\textsl{..}  %slanted shape a skewed version of the normal typeface (similar to, but slightly different from, italics) 
+%\textsc{..}  %Small Capitals  
+%\uppercase{..}  
+%\textbf{..}  %bold  
+%\textmd{..} %medium weight a font weight in between normal and bold 
+
+%Skriftstørrelser
+%\tiny 
+%\scriptsize  
+%\footnotesize 
+%\small 
+%\normalsize 
+%\large  
+%\Large  
+%\LARGE  
+%\huge  
+%\Huge 
+
+%headers and footers
+\pagestyle{fancy}
+%hvis ikke denne er valgt får de efterfølgende definitioner af header og footer ingen effekt.
+%standard uden denne er at der ingen header er og at kun sidetal står i footer med pagenumbering.
+
+%\lhead{}
+%\chead{}
+%\rhead{\bfseries Darwins liv} % eksempel på fast tekst.
+%Hvis ikke disse tre settings anvendes, står der til venstre navn på underafsnit og til højre navn på afsnit - kun hvis \pagestyle{fancy} er valgt.
+
+%Nedenstående giver samme som default uden angivelse af lhead, chead og rhead.
+
+%lhead{\rightmark{}} %\rightmark{}= navn på underafsnit
+%chead{}
+%rhead{\leftmark{}} % \leftmark{}= navn på afsnit
+
+\lfoot{Fra:		Peter}
+\cfoot{\thepage} % der bruges formatet fra \pagenumbering{}
+\rfoot{Til:		Min lærer}
+
+\renewcommand{\headrulewidth}{0.4pt}%tykkelse af streg under header.
+\renewcommand{\footrulewidth}{0.4pt}%tykkelse af streg over footer. Hvis denne udelades kommer der ingen streg ved footer. %Se fancyhdr manualer for mere sofistikeret layout af header og footer.
+
+\renewcommand{\sectionmark}[1]{\markboth{Afsnit\ \thesection. \ #1}{}}
+%\renewcommand{\subsectionmark}[1]{\markright{Underafsnit \ \thesubsection #1}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}}
+
+\setlength{\columnseprule}{0.4pt}%giver lodret linie til at separere kolonner.
+\setlength{\columnsep}{20pt}%Afstand mellem kolonner. Standard er 10pt.
+
+%\hyphenpenalty=100000 %denne kan undgå orddeling
+%\hyphenation{Darwin inver-te-brates}%orddeling Darwin må ikke deles. To mulige deling af invertebrates.
+
+\begin{abstract}
+Her vil jeg fortælle om forskellige basislayouts for \LaTeX{}
+\end{abstract}
+
+%Afsnitsinddeling
+%\part{part} %-1 not in letters 
+%\chapter{chapter} %0 only books and reports 
+%\section{section} %1 not in letters 
+%\subsection{subsection} %2 not in letters 
+%\subsubsection{subsubsection} %3 not in letters 
+%\paragraph{paragraph} %4 not in letters 
+%\subparagraph{subparagraph} %5 not in letters 
+
+\section{Første afsnit}
+
+\begin{multicols}{2}%afsnit med 2 kolonner
+\mbox{Charles Robert Darwin} %dette betyder at vi ikke ønsker disse ord delt.
+was born in Shrewsbury, Shropshire, England on 12 February 1809 at his family home, the Mount.[16] He was the fifth of six children of wealthy society doctor and financier Robert Darwin, and Susannah Darwin (noe Wedgwood). He was the grandson of Erasmus Darwin on his father's side, and of Josiah Wedgwood on his mother's side. Both families were largely Unitarian, though the Wedgwoods were adopting Anglicanism. Robert Darwin, himself quietly a freethinker, had baby Charles baptised in the Anglican Church, but Charles and his siblings attended the Unitarian chapel with their mother. The eight-year-old Charles already had a taste for natural history and collecting when he joined the day school run by its preacher in 1817. That July, his mother died. From September 1818, he joined his older brother Erasmus attending the nearby Anglican Shrewsbury School as a boarder.[17]
+\end{multicols}
+
+\begin{multicols}{3}%afsnit med 3 kolonner
+Darwin spent the summer of 1825 as an apprentice doctor, helping his father treat the poor of Shropshire, before going to the University of Edinburgh Medical School with his brother Erasmus in October 1825. He found lectures dull and surgery distressing, so neglected his studies. He learned taxidermy from John Edmonstone, a freed black slave who had accompanied Charles Waterton in the South American rainforest, and often sat with this "very pleasant and intelligent man".[18]
+In Darwin's second year he joined the Plinian Society, a student natural history group whose debates strayed into radical materialism. He assisted Robert Edmond Grant's investigations of the anatomy and life cycle of marine invertebrates in the Firth of Forth, and on 27 March 1827 presented at the Plinian his own discovery that black spores found in oyster shells were the eggs of a skate leech. One day, Grant praised Lamarck's evolutionary ideas. Darwin was astonished, but had recently read the similar ideas of his grandfather Erasmus and remained indifferent.[19] Darwin was rather bored by Robert Jameson's natural history course which covered geology including the debate between Neptunism and Plutonism. He learned classification of plants, and assisted with work on the collections of the University Museum, one of the largest museums in Europe at the time.[20]
+\end{multicols}
+
+\begin{figure}[h]% [h]for at placere så vidt muligt hvor figuren er i teksten.
+\centering
+\begin{minipage}[t]{0.4\textwidth}%placeringsparameter kan være enten c, t eller b
+Her er første minipage hvor der kan placeres indskud i teksten, der ikke er en del af tekstflow.\end{minipage}
+\hspace{1cm}%melemrum mellem minipages
+\begin{minipage}[t]{0.4\textwidth}
+Det er en god ide at placere minipage i et figure environment for at kunne placere flere side om side eller sikre at teksten kan wrappes omkring minipage.
+\end{minipage}
+\caption{her er min figur med minipage}
+\label{fig1}
+\end{figure}
+
+This neglect of medical studies annoyed his father, who shrewdly sent him to Christ's College, Cambridge, for a Bachelor of Arts degree as the first step towards becoming an Anglican parson. As Darwin was unqualified for the Tripos, he joined the ordinary degree course in January 1828.[21] He preferred riding and shooting to studying.
+His cousin William Darwin Fox introduced him to the popular craze for beetle collecting which Darwin pursued zealously, getting some of his finds published in Stevens' Illustrations of British entomology. 
+He became a close friend and follower of botany professor John Stevens Henslow and met other leading naturalists who saw scientific work as religious natural theology, becoming known to these dons as "the man who walks with Henslow". When his own exams drew near, Darwin focused on his studies and was delighted by the language and logic of William Paley's Evidences of Christianity.[22] In his final examination in January 1831 Darwin did well, coming tenth out of 178 candidates for the ordinary degree.[23]
+
+\subsection{underafsnit a}
+Darwin had to stay at Cambridge until June. He studied Paley's Natural Theology which made an argument for divine design in nature, explaining adaptation as God acting through laws of nature.[24] He read John Herschel's new book which described the highest aim of natural philosophy as understanding such laws through inductive reasoning based on observation, and Alexander von Humboldt's Personal Narrative of scientific travels. Inspired with "a burning zeal" to contribute, Darwin planned to visit Tenerife with some classmates after graduation to study natural history in the tropics.
+In preparation, he joined Adam Sedgwick's geology course, then went with him in the summer for a fortnight to map strata in Wales.[25] After a week with student friends at Barmouth, he returned home to find a letter from Henslow proposing Darwin as a suitable (if unfinished) gentleman naturalist for a self-funded place with captain Robert FitzRoy, more as a companion than a mere collector, on HMS Beagle which was to leave in four weeks on an expedition to chart the coastline of South America.[26] His father objected to the planned two-year voyage, regarding it as a waste of time, but was persuaded by his brother-in-law, Josiah Wedgwood, to agree to his son's participation.[27]
+Voyage of the BeagleFor more details on this topic, see Second voyage of HMS Beagle.
+
+\section{Andet afsnit}
+The voyage of the BeagleBeginning on 27 December 1831, the voyage lasted almost five years and, as FitzRoy had intended, Darwin spent most of that time on land investigating geology and making natural history collections, while the Beagle surveyed and charted coasts.[3][28] He kept careful notes of his observations and theoretical speculations, and at intervals during the voyage his specimens were sent to Cambridge together with letters including a copy of his journal for his family.[29] He had some expertise in geology, beetle collecting and dissecting marine invertebrates, but in all other areas was a novice and ably collected specimens for expert appraisal.[30] Despite suffering badly from seasickness, Darwin wrote copious notes while on board the ship. Most of his zoology notes are about marine invertebrates, starting with plankton collected in a calm spell.[28][31]
+
+On their first stop ashore at St. Jago, Darwin found that a white band high in the volcanic rock cliffs included seashells. FitzRoy had given him the first volume of Charles Lyell's Principles of Geology which set out uniformitarian concepts of land slowly rising or falling over immense periods,[II] and Darwin saw things Lyell's way, theorising and thinking of writing a book on geology.[32] In Brazil, Darwin was delighted by the tropical forest,[33] but detested the sight of slavery.[34]
+
+\subsection{Afsnit to-et}
+At Punta Alta in Patagonia he made a major find of fossil bones of huge extinct mammals in cliffs beside modern seashells, indicating recent extinction with no signs of change in climate or catastrophe. He identified the little known Megatherium by a tooth and its association with bony armour which had at first seemed to him like a giant version of the armour on local armadillos. The finds brought great interest when they reached England.[35][36] On rides with gauchos into the interior to explore geology and collect more fossils he gained social, political and anthropological insights into both native and colonial people at a time of revolution, and learnt that two types of rhea had separate but overlapping territories.[37][38] Further south he saw stepped plains of shingle and seashells as raised beaches showing a series of elevations. He read Lyell's second volume and accepted its view of "centres of creation" of species, but his discoveries and theorising challenged Lyell's ideas of smooth continuity and of extinction of species.[39][40] 
+
+As HMS Beagle surveyed the coasts of South America, Darwin theorised about geology and extinction of giant mammals.Three Fuegians on board, who had been seized during the first Beagle voyage and had spent a year in England, were taken back to Tierra del Fuego as missionaries. Darwin found them friendly and civilised, yet their relatives seemed "miserable, degraded savages", as different as wild from domesticated animals.[41] To Darwin the difference showed cultural advances, not racial inferiority. Unlike his scientist friends, he now thought there was no unbridgeable gap between humans and animals.[42] A year on, the mission had been abandoned. The Fuegian they had named Jemmy Button lived like the other natives, had a wife, and had no wish to return to England.[43]
+
+Darwin experienced an earthquake in Chile and saw signs that the land had just been raised, including mussel-beds stranded above high tide. High in the Andes he saw seashells, and several fossil trees that had grown on a sand beach. He theorised that as the land rose, oceanic islands sank, and coral reefs round them grew to form atolls.[44][45]
+On the geologically new Galapagos Islands Darwin looked for evidence attaching wildlife to an older "centre of creation", and found mockingbirds allied to those in Chile but differing from island to island. He heard that slight variations in the shape of tortoise shells showed which island they came from, but failed to collect them, even after eating tortoises taken on board as food.[46][47] In Australia, the marsupial rat-kangaroo and the platypus seemed so unusual that Darwin thought it was almost as though two distinct Creators had been at work.[48] He found the Aborigines good humoured and pleasant, and noted their depletion by European settlement.[49]
+\subsection{Afsnit to-to}
+The Beagle investigated how the atolls of the Cocos (Keeling) Islands had formed, and the survey supported Darwin's theorising.[45] FitzRoy began writing the official Narrative of the Beagle voyages, and after reading Darwin's diary he proposed incorporating it into the account.[50] Darwin's Journal was eventually rewritten as a separate third volume, on natural history.[51]
+
+In Cape Town Darwin and FitzRoy met John Herschel, who had recently written to Lyell praising his uniformitarianism as opening bold speculation on "that mystery of mysteries, the replacement of extinct species by others" as "a natural in contradistinction to a miraculous process".[52] When organising his notes as the ship sailed home, Darwin wrote that if his growing suspicions about the mockingbirds, the tortoises and the Falkland Islands Fox were correct, "such facts undermine the stability of Species", then cautiously added "would" before "undermine".[53] He later wrote that such facts "seemed to me to throw some light on the origin of species".[54]
+\end{document}
