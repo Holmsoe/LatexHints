@@ -28,45 +28,33 @@ Der kan være mange småproblemer ved installation af \LaTeX{}. De kan være kny
 
 \section{Installation og kørsel}
 
-Det grundlæggende program der indeholder koden til både LaTex og MetaPost findes i programmet MikTex.
-Projektsiden er: \verb"http://miktex.org"
+Det grundlæggende program der indeholder koden til både LaTex og MetaPost findes i programmet TexLive.
+Projektsiden er: \verb"https://www.tug.org/texlive/acquire-netinstall.html". Tidligere har jeg anvendt MikTex men stødte på problemer med tekst i Metapostfiler.
+TexLive har ikke tilsvarende problemer. TexLive installationen er noget større end MikTex og tager en times tid. 
 
 \begin{itemize}
-\item Gå til downloadsiden for version 2.8. Version 2.9 kan indeholde bugs, men jeg er ikke sikker.
-\item Vælg Basic installer 2.8 og herefter run og kør 
-\item Accepter nu betingelserne.
-\item Vælg All users. 
-\item Accepter placering af program.
-\item VIGTIGT - Ved næste billede skal vælges:\\ \textbf{Install missing packages on the fly: ->Vælg YES.}
-\item Herefter kan programmet installeres.
+\item Gå til downloadsiden.
+\item Følg instruktionerne. 
 \end{itemize}
 
-Nu skal instillingerne ændres.
+Når installationen er slut findes følgende foldere under Programmer:
 \begin{itemize}
-\item Gå til Miktex programmet under Alle Programmer i startmenu. 
-\item Vælg Maintenance.
-\item Gå til roots. Vi skal nu sætte folder.
-\item Opret en folder med følgende sti: \verb"C:\FolderNavn\Tex\LaTex"
-\item Under roots vælges: Show MikTex maintained directories.
-\item Herefter ønsker vi at tilføje den nye folder.
-Vælg: Add.
-\item Vælg: Stien til \verb"C:\Foldernavn" men ikke resten af stien!
+\item DVI viewer
+\item TexLIve Command line
+\item TexLIve dokumentation
+\item TexLive Manager
+\item TexWors editor
+\item TexLive uninstall
 \end{itemize}
 
- \LaTeX{} skal kunne finde filerne. Det er et af de punkter der kan skabe forvirring.  
-
-\subsection{Køre \LaTeX{}}
-\begin{itemize}
-\item VIGTIGT: Vælg General og tryk derefter Refresh FNDB. Kun på denne måde kan filerne findes.
-\item BEMÆRK: Hver gang der kommer nye filer i folderne skal der trykkes FNDB for at genskabe kontakt.
-\end{itemize}
-For at køre programmer skal vi over i kommandolinien på DOS promt.
+ \subsection{Køre \LaTeX{}}
+Vi kan køre programmet fra kommandolinine
 \begin{itemize}
 \item I Vista kan man trykke \verb"cmd" i søge feltet. I ældre skal man skrive \verb"cmd" i Kør feltet.
 \item For at bevæge sig her, er det en fordel at kende de grundlæggende kommandoer i DOS.
 Her kan du finde de mest almindelige kommandoer:\\ \verb"http://www.computerhope.com/dostop10.htm"
 \item Skriv \verb"cd.." flere gange indtil du er i \verb"C:\" folderen.
-\item Gå herefter til aktuel folder med \verb"cd FolderNavn\Tex\LaTex".
+\item Gå herefter til aktuel folder med \verb"cd FolderNavn".
 Nu er du i den rigtige folder og kan køre programmerne.
 \item For at køre programmet skal du i DOS kommandolinie (stadig i den rigtige folder) skrive:\\
 \textbf{pdflatex} Filnavn 
@@ -75,9 +63,6 @@ Herved dannes outputfil i \verb".pdf" format.
 Inputfilen til \verb"pdflatex" skal være en \verb".tex" fil. 
 Filnavnet på output bliver \verb"Filnavn.pdf".
 Under dannelse af output skaber \LaTeX{} en del ekstrafiler som anvendes i den videre proces. 
-Men nogle gange kan filerne ikke findes før der ikke er kørt en FNDB. HUSK: FNDB opdaterer \LaTeX{} søgestier med aktuelle filer. 
-Virker kørsel ikke første gang og er der en fejlmeddelelse om manglende filer skal du køre FNDB og prøve igen. Efter installation er det en god ide at starte \verb"Refresh FNDB".\\ Gå til \verb"Alle programmer->Miktex->Maintenance->Settings". 
-Hvis der i \LaTeX{} programmet henvises til en MetaPost fil, skal den ligge i samme folder.
 
 \subsection{Køre MetaPost}
 Når du kører MetaPost omdanner du tekstfilen i \verb".mp" format til en række \verb".eps" filer, en for hver figure i MetaPost filen. \verb"eps" format kan også læses af \LaTeX{} men danner en \verb".DVI" fil som resultat. Denne kan så ad omveje omdannes til \verb".pdf". I denne guide går vi direkte til \verb".pdf" filer. Så processen er:
@@ -86,11 +71,11 @@ Når du kører MetaPost omdanner du tekstfilen i \verb".mp" format til en række
 \item Omdan de dannede figurefiler i \verb".eps" format til \verb".pdf" filer der kan importeres til \LaTeX{}.
 \end{enumerate}
 \begin{itemize}
-\item Vil du køre en MetaPost fil skal du i DOS i den rigtige sti skrive:\\
+\item Gå til TexLive Command line.
+\item Skift til aktuel sti og skriv:\\
 \textbf{Mpost} Filnavn.
 Filen kan skrives uden extension. MetaPost filen skal have extension \verb".mp".
 Herved dannes \verb".eps" filer der kan importeres til Latex. Hvis MetaPost filen indeholder kode til flere MetaPost figurer dannes der en fil for hver figur. Disse bliver placeret i det aktuelle arkiv. Hver fil har sin egen extension - f.eks. \verb".1" - selvom de alle er \verb".eps" filer.
-\item Hvis det ikke virker første gang, kan du prøve at refreshe med FNDB (evt. skal åbne pdf filer lukkes) og køre igen.
 \end{itemize}
 
 Vi skal nu omdanne de dannede \verb"eps" filer til en \verb".pdf" filer. Dette gøres med det indbyggede program \verb"epstopdf".
@@ -98,13 +83,11 @@ Hvis der er flere \verb"eps" filer skal der køres en konvertering for hver fil.
 Hvis der er flere \verb"eps" filer må de først omdøbes, da de ellers ville blive konverteret over i den samme\verb".pdf" fil.
 \begin{itemize}
 \item Omdøb filen \verb"Filnavn.1" til f.eks. \verb"FilnavnFig1.1". Dette er kun nødvendigt hvis der er flere figurer der er dannet fra MetaPost filen.
-\item Skriv i \verb"DOS" prompten:\\
+\item Skriv i \verb"TexLive command line":\\
 \textbf{Epstopdf} FilnavnFig.1\\
 Medtag denne gang extension. Herved dannes filen \verb"FilnavnFig1.pdf". 
-\item Også her skal du refreshe med FNDB inden næste kørsel.
 \end{itemize}
 Da output for kørsel af \LaTeX{} dokumentet er \verb".pdf" må ingen af de resulterende figurfiler fra MetaPost have samme navn som \LaTeX{} filen. Ellers kommer output i karambolage med output fra \LaTeX{}.
-Husk, at både MetaPost og \LaTeX{} laver nye filer første gang en fil køres. Derfor opstår der fejl ved næste kørsel hvis ikke du går til MikTex og kører FNDB først. Men luk først alle filer der ligger i folderen. \\
 Hvis du retter i \verb".mp" eller \verb".tex" filen og kører igen. Så husk at lukke evt. åbne \verb".pdf" filer. Ellers kan programmerne ikke skrive til filerne.
 
 \section{Testeksempel}
@@ -118,16 +101,16 @@ Der findes mange editorer til at håndtere \LaTeX{} og MetaPostfiler. Her kan n�
 \item Emacs 
 \end{itemize}
 Det kræver dog ekstra studier at sætte dem op og anvende dem. Jeg har selv haft problemer med at få dem til fungere ordentligt - f.eks. i forhold til den nye Adobe version. Og hvad angår kørsel af MetaPost - især anvendelse af matematikformler og labels i MetaPost.\\ Så her bruger vi TeXworks.
-Fordelen er, at Texworks følger med den MikTex installation du allerede har lavet.
+Fordelen er, at Texworks følger med den TexLive installation du allerede har lavet.
 For at lave det nødvendige \LaTeX{} dokument skal du gøre følgende:
 \begin{itemize}
-\item Gå til Programmer og find MikTex.
-\item Under MikTex vælg \verb"Texworks".
+\item Gå til Programmer og find TexLive.
+\item Under TexLive vælg \verb"Texworks".
 \item Programmet er nu startet og du skal kopiere koden til \LaTeX{} filen herfra.
-\item Herefter  gemmer du filen som en \verb".tex" fil under navnet DemoLatex.tex i folderen \verb"C:\FolderNavn\Tex\Latex".
+\item Herefter  gemmer du filen som en \verb".tex" fil under navnet DemoLatex.tex i folderen".
 \item Opret ny fil i Texworks under File og New.
-\item Kopier koden fra MetaPost filen nedenfor.
-\item Gem filen som en \verb".mp" fil under navnet DemoMetaPost.mp i folderen \verb"C:\FolderNavn\Tex\Latex".
+\item Kopier koden fra MetaPost filen nedenfor. TexWorks bruges som editor for Metapost.
+\item Gem filen som en \verb".mp" fil under navnet DemoMetaPost.mp i folderen".
 \end{itemize}
 
 \subsection{\LaTeX{} koden}
@@ -186,25 +169,21 @@ end
 \begin{itemize}
 \item Åbn en ny fil i \verb"TeXworks"
 \item Kopier koden fra dette eksempel til \verb"TeXworks"
-\item Gem filen i \verb"C:\Foldernavn\Tex\Latex" under navnet \verb"DemoMetaPost.mp". Pas på der ikke kommer ekstra extension \verb".tex" på gennem editoren.
-\item Kør FNDB så MetaPost kan finde filen.
-\item Gå til \verb"C:\Foldernavn\Tex\Latex" i DOS.
+\item Gem filen i \verb"C:\Foldernavn" under navnet \verb"DemoMetaPost.mp". Pas på der ikke kommer ekstra extension \verb".tex" på gennem editoren.
+\item Gå til \verb"C:\Foldernavn" i TexLive command line.
 \item Skriv \verb"mpost DemoMetaPost" i Dos for at køre MetaPost filen. Uden extension.
-\item Du vil nu få en fejlmelding, der skyldes at sammenhængen i MetaPostfilerne går i 2 tempi. Du skal derfor køre en FNDB for at koble til de nydannede filer.
+\item Nogle er der sammenhænge der kræver to kørsler
 \item Skriv igen  \verb"mpost DemoMetaPost"
 \item Du har nu fået to filer dannet: \verb"DemoMetaPost.0" og \verb"DemoMetaPost.1".
-\item Gå nu til \verb"C:\Foldernavn\Tex\Latex" i windows for at ændre navne på de dannede filer.
+\item Gå nu til \verb"C:\Foldernavn" i windows for at ændre navne på de dannede filer.
 \item \verb"DemoMetaPost.0" ændres til \verb"DemoMetaPostFig0.0" og \verb"DemoMetaPost.1" ændres til \verb"DemoMetaPostFig1.1".
-\item Kør FNDB så filerne kan findes
 \item Konverter første fil til pdf med \verb"epstopdf DemoMetaPostFig0.0"
 \item Konverter anden fil til pdf med \verb"epstopdf DemoMetaPostFig1.1"
 \item Du vil nu se at der er kommet to nye pdf filer i folderen.
-\item Kør igen FNDB så \LaTeX{}  kan finde filerne.
 \end{itemize}
 
 \subsection{\LaTeX{} filer}
 \begin{itemize}
-\item Kør igen FNDB så \LaTeX{}  kan finde de nydannede \verb"pdf" filer fra MetaPost.
 \item Skriv \verb"pdflatex DemoLatex" i \verb"DOS" kommandolinien.
 \end{itemize}
 Hvis du kan få dette eksempel til at virke, er du godt kørende. En af de svære for mig har været at få labels på figurer i MetaPost (for eksempel bogstaver med matematik formatering i hjørnerne på en trekant, eller at få matematikformler skrevet i MetaPost. Hvis du kan se både labels og en formel i den resulterende \verb"pdf" dokument \verb"DemoLatex.pdf" virker det. Tillykke.
